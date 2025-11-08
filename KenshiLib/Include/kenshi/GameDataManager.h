@@ -20,7 +20,7 @@ public:
     void addNewData(const lektor<GameData*>& dat);// protected RVA = 0x560DA0
     // no_addr void GameDataContainer(const class GameDataContainer & _a1);// public missing arg names
     GameDataContainer();// public RVA = 0x2C37D0
-    void _CONSTRUCTOR();// public RVA = 0x2C37D0
+    GameDataContainer* _CONSTRUCTOR();// public RVA = 0x2C37D0
     virtual ~GameDataContainer();// public RVA = 0x561990 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x561990 vtable offset = 0x0
     GameData* createNewData(itemType type, const std::string& forceID, const std::string& name);// public RVA = 0x561A40
@@ -74,7 +74,7 @@ public:
     // GameDataContainer offset = 0x0, length = 0x180
     // no_addr void GameDataManager(const class GameDataManager & _a1);// public missing arg names
     GameDataManager();// public RVA = 0x396910
-    void _CONSTRUCTOR();// public RVA = 0x396910
+    GameDataManager* _CONSTRUCTOR();// public RVA = 0x396910
     bool reloadGameData(std::string filename, bool isActive, bool _baseData);// public RVA = 0x565010
     void postProcessingTheDatas();// public RVA = 0x5647E0
     void getBuildings(lektor<GameData*>& list, const std::string& _category);// public RVA = 0x561220

@@ -20,7 +20,7 @@ public:
     static SaveFileSystem * getSingleton();// public RVA = 0x37D9A0
     // no_addr void SaveFileSystem(const class SaveFileSystem & _a1);// public missing arg names
     SaveFileSystem();// public RVA = 0x471660
-    void _CONSTRUCTOR();// public RVA = 0x471660
+    SaveFileSystem* _CONSTRUCTOR();// public RVA = 0x471660
     virtual ~SaveFileSystem();// public RVA = 0x471B20 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x471B20 vtable offset = 0x0
     void log(const std::string & message, Logger::Severity level);// public RVA = 0x470550
@@ -66,7 +66,7 @@ public:
         std::string dest; // 0x30 Member
         // no_addr void FileMessage(const struct SaveFileSystem::FileMessage & _a1);// public missing arg names
         FileMessage();// public RVA = 0x476400
-        void _CONSTRUCTOR();// public RVA = 0x476400
+        FileMessage* _CONSTRUCTOR();// public RVA = 0x476400
         ~FileMessage();// public RVA = 0x476430
         void _DESTRUCTOR();// public RVA = 0x476430
         SaveFileSystem::FileMessage & operator=(const SaveFileSystem::FileMessage & __that);// public RVA = 0x477700

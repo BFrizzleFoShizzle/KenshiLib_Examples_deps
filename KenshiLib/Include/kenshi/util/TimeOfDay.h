@@ -6,9 +6,9 @@ class TimeOfDay
 {
 public:
     TimeOfDay(double hrs);// public RVA = 0x268060
-    void _CONSTRUCTOR(double hrs);// public RVA = 0x268060
+    TimeOfDay* _CONSTRUCTOR(double hrs);// public RVA = 0x268060
     TimeOfDay();// public RVA = 0xCCF50
-    void _CONSTRUCTOR();// public RVA = 0xCCF50
+    TimeOfDay* _CONSTRUCTOR();// public RVA = 0xCCF50
     void setNull();// public RVA = 0x28A160
     bool isUnset() const;// public RVA = 0xCCF60
     void setTime(double hrs);// public RVA = 0xCCF80

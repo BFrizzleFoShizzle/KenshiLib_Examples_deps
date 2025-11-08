@@ -29,7 +29,7 @@ class Bounty
 {
 public:
     Bounty();// public RVA = 0x850A40
-    void _CONSTRUCTOR();// public RVA = 0x850A40
+    Bounty* _CONSTRUCTOR();// public RVA = 0x850A40
     int amount; // 0x0 Member
     unsigned int crimes; // 0x4 Member
     bool bountyHasBeenClaimedOnce; // 0x8 Member

@@ -12,102 +12,102 @@
 
 enum BuildingFunction
 {
-    BF_ANY = 0x80020008,
-    BF_MINE = 0x1,
-    BF_RESOURCE_STORAGE = 0x2,
-    BF_RESEARCH = 0x3,
-    BF_REFINERY = 0x4,
-    BF_GENERATOR = 0x5,
-    BF_BED = 0x6,
-    BF_TRAINING = 0x7,
-    BF_CAGE = 0x8,
-    BF_SHOP = 0x9,
-    BF_CRAFTING = 0xA,
-    BF_CORPSE_DISPOSAL = 0xB,
-    BF_TURRET = 0xC,
-    BF_GENERAL_STORAGE = 0xD,
-    BF_ITEM_FURNACE = 0xE,
-    BF_LIGHT = 0xF,
-    BF_TABLE = 0x10,
-    BF_CHAIR = 0x11,
-    BF_FLUFF = 0x12,
-    BF_SHELL_WITH_INTERIOR = 0x13,
-    BF_WALL = 0x14,
-    BF_GATE = 0x15,
-    BF_DOOR = 0x16,
-    BF_BATTERY = 0x17,
-    BF_THRONE = 0x18,
-    BF_SKELETON_BED = 0x19,
-    BF_RAIN_COLLECTOR = 0x1A,
-    BF_MINE_NATURAL = 0x1B,
-    BF_STEERING = 0x1C,
-    BF_ENGINE = 0x1D,
-    BF_LIQUID_TANK = 0x1E
+    BF_ANY,
+    BF_MINE,
+    BF_RESOURCE_STORAGE,
+    BF_RESEARCH,
+    BF_REFINERY,
+    BF_GENERATOR,
+    BF_BED,
+    BF_TRAINING,
+    BF_CAGE,
+    BF_SHOP,
+    BF_CRAFTING,
+    BF_CORPSE_DISPOSAL,
+    BF_TURRET,
+    BF_GENERAL_STORAGE,
+    BF_ITEM_FURNACE,
+    BF_LIGHT,
+    BF_TABLE,
+    BF_CHAIR,
+    BF_FLUFF,
+    BF_SHELL_WITH_INTERIOR,
+    BF_WALL,
+    BF_GATE,
+    BF_DOOR,
+    BF_BATTERY,
+    BF_THRONE,
+    BF_SKELETON_BED,
+    BF_RAIN_COLLECTOR,
+    BF_MINE_NATURAL,
+    BF_STEERING,
+    BF_ENGINE,
+    BF_LIQUID_TANK
 };
 
 enum BuildingDesignation
 {
-    BD_NONE = 0x80020008,
-    BD_SHOP = 0x1,
-    BD_BARRACKS = 0x2,
-    BD_BAR = 0x3,
-    BD_HOSPITAL = 0x4,
-    BD_ARMOURY = 0x5,
-    BD_TREASURE = 0x6,
-    BD_PRISON = 0x7,
-    BD_HQ = 0x8,
-    BD_RESIDENTIAL = 0x9,
-    BD_SLAVE_STORAGE = 0xA,
-    BD_RESIDENTIAL_SMALL = 0xB
+    BD_NONE,
+    BD_SHOP,
+    BD_BARRACKS,
+    BD_BAR,
+    BD_HOSPITAL,
+    BD_ARMOURY,
+    BD_TREASURE,
+    BD_PRISON,
+    BD_HQ,
+    BD_RESIDENTIAL,
+    BD_SLAVE_STORAGE,
+    BD_RESIDENTIAL_SMALL
 };
 
 enum BuildingClassType
 {
-    BCTYPE_FLUFF = 0x80020008,
-    BCTYPE_DOOR = 0x1,
-    BCTYPE_USABLE = 0x2,
-    BCTYPE_STORAGE = 0x3,
-    BCTYPE_PRODUCTION = 0x4,
-    BCTYPE_RESEARCH = 0x5,
-    BCTYPE_CRAFTING = 0x6,
-    BCTYPE_GATEWAY = 0x7,
-    BCTYPE_TURRET = 0x8,
-    BCTYPE_WALL = 0x9,
-    BCTYPE_ITEM_FURNACE = 0xA,
-    BCTYPE_LIGHT = 0xB,
-    BCTYPE_SHELL_WITH_INTERIOR = 0xC,
-    BCTYPE_FARM = 0xD
+    BCTYPE_FLUFF,
+    BCTYPE_DOOR,
+    BCTYPE_USABLE,
+    BCTYPE_STORAGE,
+    BCTYPE_PRODUCTION,
+    BCTYPE_RESEARCH,
+    BCTYPE_CRAFTING,
+    BCTYPE_GATEWAY,
+    BCTYPE_TURRET,
+    BCTYPE_WALL,
+    BCTYPE_ITEM_FURNACE,
+    BCTYPE_LIGHT,
+    BCTYPE_SHELL_WITH_INTERIOR,
+    BCTYPE_FARM
 };
 
 // TODO move?
 enum CursorType
 {
-    DEFAULT_CURSOR = 0x80020008,
-    MEDIC_CURSOR = 0x1,
-    LOOT_CURSOR = 0x2,
-    LIFT_CURSOR = 0x3,
-    PICKUP_ITEM_CURSOR = 0x4,
-    ATTACK_CURSOR = 0x5,
-    GUARD_CURSOR = 0x6,
-    TALK_CURSOR = 0x7,
-    SPECIAL_TALK_CURSOR = 0x8,
-    USE_CURSOR = 0x9,
-    TRADER_CURSOR = 0xA,
-    BUILD_CURSOR = 0xB,
-    OPEN_DOOR_CURSOR = 0xC,
-    DOOR_ESCAPE_CURSOR = 0xD,
-    LOCKED_CURSOR = 0xE,
-    PICK_LOCK_CURSOR = 0xF,
-    BUY_HOUSE_CURSOR = 0x10,
-    GREEN_CURSOR = 0x11,
-    MINE_CURSOR = 0x12,
-    REPAIR_CURSOR = 0x13,
-    LIGHT_CURSOR = 0x14,
-    STEAL_CURSOR = 0x15,
-    HAND_CURSOR = 0x16,
-    INVALID_MOVEMENT_CURSOR = 0x17,
-    LOOT_CURSOR_RED = 0x18,
-    KNOCKOUT_CURSOR = 0x19
+    DEFAULT_CURSOR,
+    MEDIC_CURSOR,
+    LOOT_CURSOR,
+    LIFT_CURSOR,
+    PICKUP_ITEM_CURSOR,
+    ATTACK_CURSOR,
+    GUARD_CURSOR,
+    TALK_CURSOR,
+    SPECIAL_TALK_CURSOR,
+    USE_CURSOR,
+    TRADER_CURSOR,
+    BUILD_CURSOR,
+    OPEN_DOOR_CURSOR,
+    DOOR_ESCAPE_CURSOR,
+    LOCKED_CURSOR,
+    PICK_LOCK_CURSOR,
+    BUY_HOUSE_CURSOR,
+    GREEN_CURSOR,
+    MINE_CURSOR,
+    REPAIR_CURSOR,
+    LIGHT_CURSOR,
+    STEAL_CURSOR,
+    HAND_CURSOR,
+    INVALID_MOVEMENT_CURSOR,
+    LOOT_CURSOR_RED,
+    KNOCKOUT_CURSOR
 };
 
 class DataPanelLine;
@@ -160,9 +160,9 @@ public:
     public:
         // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
         ConstructionState(const Building::ConstructionState& c);// public RVA = 0x549AE0
-        void _CONSTRUCTOR(const Building::ConstructionState& c);// public RVA = 0x549AE0
+        ConstructionState* _CONSTRUCTOR(const Building::ConstructionState& c);// public RVA = 0x549AE0
         ConstructionState();// public RVA = 0x549A40
-        void _CONSTRUCTOR();// public RVA = 0x549A40
+        ConstructionState* _CONSTRUCTOR();// public RVA = 0x549A40
         ~ConstructionState();// public RVA = 0x55C2B0
         void _DESTRUCTOR();// public RVA = 0x55C2B0
         void addMaterials(GameData* mat);// public RVA = 0x549C20
@@ -327,7 +327,7 @@ public:
     BuildingClassType classType; // 0x198 Member
     // no_addr void Building(const class Building & _a1);// public missing arg names
     Building(GameData* data, const Ogre::Vector3& position, const Ogre::Quaternion& orientation, Faction* _participant, const hand& town, const hand& _handle, Layout* __isfurnitureOf, Building* _indoors);// protected RVA = 0x55C310
-    void _CONSTRUCTOR(GameData* data, const Ogre::Vector3& position, const Ogre::Quaternion& orientation, Faction* _participant, const hand& town, const hand& _handle, Layout* __isfurnitureOf, Building* _indoors);// protected RVA = 0x55C310
+    Building* _CONSTRUCTOR(GameData* data, const Ogre::Vector3& position, const Ogre::Quaternion& orientation, Faction* _participant, const hand& town, const hand& _handle, Layout* __isfurnitureOf, Building* _indoors);// protected RVA = 0x55C310
     void setToDefaultFactionDivision();// protected RVA = 0x55B9B0
     bool updateNavmesh; // 0x19C Member
     bool visible; // 0x19D Member

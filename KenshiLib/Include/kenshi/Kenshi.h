@@ -3,14 +3,8 @@
 #include <Defines.h>
 
 #include "mygui/MyGUI_Gui.h"
-class GameWorld;
-class InputHandler;
-class GlobalConstants;
-class OptionsHolder;
-class SaveManager;
-class SaveFileSystem;
 
-namespace Kenshi 
+namespace KenshiLib
 {
     class KLIB_EXPORT BinaryVersion
     {
@@ -81,32 +75,19 @@ namespace Kenshi
         std::string version;
     };
 
-    KLIB_EXPORT void Init();
     // TODO pointer so we can make it an interface?
     KLIB_EXPORT BinaryVersion GetKenshiVersion();
+
+    // *********** DO NOT USE ***********
+    // BACKWARDS COMPATIBILITY WILL NOT BE MAINTAINED FOR INTERNAL FUNCTIONS
+#ifdef KENSHILIB_INTERNAL
+    KLIB_EXPORT void Init();
     // returns true on success
     KLIB_EXPORT bool OverrideKenshiVersion(BinaryVersion newVersion);
-
-    // GameWorld looks to be an object of all game state, whether its loaded or not.
-    // Has things like a list of loaded mods and all the GameData loaded in, probably saves too.
-    // GameWorld ou;
-    KLIB_EXPORT GameWorld& GetGameWorld();
 
     // default 2000
     KLIB_EXPORT float& GetMaxCameraDistance();
     // default 10
     KLIB_EXPORT float& GetMinCameraDistance();
-
-    // Not 100% sure what this is called
-    KLIB_EXPORT InputHandler& GetInputHandler();
-
-    // Static var separate to GameWorld
-    // GlobalConstants con;
-    KLIB_EXPORT GlobalConstants* GetCon();
-
-    // OptionsHolder options;
-    KLIB_EXPORT OptionsHolder* GetOptions();
-
-    KLIB_EXPORT SaveManager* GetSaveManager();
-    KLIB_EXPORT SaveFileSystem* GetSaveFileSystem();
+#endif
 }

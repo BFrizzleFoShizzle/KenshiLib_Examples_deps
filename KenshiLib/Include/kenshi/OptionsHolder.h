@@ -8,7 +8,7 @@ class OptionsHolder
 public:
     // no_addr void OptionsHolder(const class OptionsHolder & _a1);// public missing arg names
     OptionsHolder();// public RVA = 0x3E83B0
-    void _CONSTRUCTOR();// public RVA = 0x3E83B0
+    OptionsHolder* _CONSTRUCTOR();// public RVA = 0x3E83B0
     float CAMERA_MOVE_SPEED; // 0x0 Member
     float CAMERA_PAN_SPEED; // 0x4 Member
     float CAMERA_TILT_SPEED; // 0x8 Member

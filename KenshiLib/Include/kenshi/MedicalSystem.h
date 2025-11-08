@@ -6,7 +6,7 @@
 #include "util/StringPair.h"
 
 #include <ogre/OgreVector3.h>
-#include <boost/unordered_map.hpp>
+#include <kenshi/util/OgreUnordered.h>
 
 // 1.0.59 GOG MedicalSystem TakeDamage possibly @ kenshi_GOG_x64.exe+5056D0 
 // MedicalSystem::TakeDamage(HealthPartStatus* part, struct damage, uint64_t unk)
@@ -29,29 +29,31 @@ class RobotLimbs
 public:
     enum Limb
     {
-        LEFT_ARM = 0x0,
-        RIGHT_ARM = 0x1,
-        LEFT_LEG = 0x2,
-        RIGHT_LEG = 0x3,
-        NULL_LIMB = 0x4
+        LEFT_ARM,
+        RIGHT_ARM,
+        LEFT_LEG,
+        RIGHT_LEG,
+        NULL_LIMB
     };
 
-    RobotLimbs(Character*);// RVA = 0x8D570
-    ~RobotLimbs();// RVA = 0x8D5A0
-    void load(GameData*);// RVA = 0x90310
-    void save(GameData*);// RVA = 0x8FCD0
-    LimbState getState(Limb);// RVA = 0x8D5D0
-    Item* getLimb(Limb);// RVA = 0x8D5E0
-    int getMask();// RVA = 0x8D5F0
-    void setLimb(Limb, LimbState, Item*);// RVA = 0x8FF50
-    RootObject* getInventoryInterface(bool);// RVA = 0x90650
-    void destroyInventoryInterface();// RVA = 0x8D640
-    Item* getLimbItem(Limb);// RVA = 0x4FC120
+    RobotLimbs(Character* c);// public RVA = 0xCD3B0
+    RobotLimbs* _CONSTRUCTOR(Character* c);// public RVA = 0xCD3B0
+    ~RobotLimbs();// public RVA = 0xCD3E0
+    void _DESTRUCTOR();// public RVA = 0xCD3E0
+    void load(GameData* state);// public RVA = 0xD0150
+    void save(GameData* state) const;// public RVA = 0xCFB10
+    LimbState getState(RobotLimbs::Limb limb) const;// public RVA = 0xCD410
+    Item* getLimb(RobotLimbs::Limb limb) const;// public RVA = 0xCD420
+    int getMask() const;// public RVA = 0xCD430
+    void setLimb(RobotLimbs::Limb limb, LimbState state, Item* item);// public RVA = 0xCFD90
+    RootObject* getInventoryInterface(bool create);// public RVA = 0xD0490
+    void destroyInventoryInterface();// public RVA = 0xCD480
+    Item* getLimbItem(RobotLimbs::Limb l);// public RVA = 0x6431B0
     Character* character; // 0x0 Member
     RootObject* inventory; // 0x8 Member
     LimbState states[0x4]; // 0x10 Member
     Item* items[0x4]; // 0x20 Member
-    // no_addr public void * __vecDelDtor(unsigned int);
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
 
 namespace AttackDirection 
@@ -78,6 +80,7 @@ class Damages;
 class CombatTechniqueData;
 class DatapanelGUI;
 
+
 class MedicalSystem
 {
 public:
@@ -85,7 +88,7 @@ public:
     void precalculateFirstAidNeedScore();// private RVA = 0x6446E0
     // no_addr void MedicalSystem(const class MedicalSystem & _a1);// public missing arg names
     MedicalSystem();// public RVA = 0x640270
-    void _CONSTRUCTOR();// public RVA = 0x640270
+    MedicalSystem* _CONSTRUCTOR();// public RVA = 0x640270
     virtual ~MedicalSystem();// public RVA = 0x646230 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x646230 vtable offset = 0x0
     void init(AnimationClass* animsys, Character* c, GameData* race, CharStats* _stats);// public RVA = 0x64DC90
@@ -113,10 +116,10 @@ public:
         void load(GameData* out, int num);// public RVA = 0x64CE80
         enum PartType
         {
-            PART_TORSO = 0x80020008,
-            PART_LEG = 0x1,
-            PART_ARM = 0x2,
-            PART_HEAD = 0x3
+            PART_TORSO,
+            PART_LEG,
+            PART_ARM,
+            PART_HEAD
         };
 
         MedicalSystem::HealthPartStatus::PartType whatAmI; // 0x8 Member
@@ -210,9 +213,9 @@ public:
     bool isCollapse(MedicalSystem::HealthPartStatus* health, float _a2);// public RVA = 0x643330
     enum CollapseStage
     {
-        COLLAPSE_NONE = 0x80020008,
-        COLLAPSE_BUT_NO_RAGDOLL = 0x1,
-        COLLAPSE_KO = 0x2
+        COLLAPSE_NONE,
+        COLLAPSE_BUT_NO_RAGDOLL,
+        COLLAPSE_KO
     };
 
     MedicalSystem::CollapseStage getCollapseStage(MedicalSystem::HealthPartStatus* health, float bias);// public RVA = 0x643CD0
@@ -284,3 +287,4 @@ public:
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
+

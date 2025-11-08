@@ -12,7 +12,7 @@ public:
     // Character offset = 0x0, length = 0x6D8
     // no_addr void CharacterHuman(class CharacterHuman & _a1);// public missing arg names
     CharacterHuman(GameData * d, Faction * f, hand _handle);// protected RVA = 0x5CB290
-    void _CONSTRUCTOR(GameData * d, Faction * f, hand _handle);// protected RVA = 0x5CB290
+    CharacterHuman* _CONSTRUCTOR(GameData * d, Faction * f, hand _handle);// protected RVA = 0x5CB290
     virtual ~CharacterHuman();// protected RVA = 0x5CB2E0 vtable offset = 0x0
     void _DESTRUCTOR();// protected RVA = 0x5CB2E0 vtable offset = 0x0
     virtual CharacterHuman * isHuman();// public RVA = 0x5E5240 vtable offset = 0x0

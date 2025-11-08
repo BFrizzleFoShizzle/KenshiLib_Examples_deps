@@ -25,7 +25,7 @@ class rendHit
 {
 public:
     rendHit();// public RVA = 0x9AFFB0
-    void _CONSTRUCTOR();// public RVA = 0x9AFFB0
+    rendHit* _CONSTRUCTOR();// public RVA = 0x9AFFB0
     int data; // 0x0 Member
     Ogre::Vector3 hit; // 0x4 Member
     // no_addr class rendHit & operator=(const class rendHit & _a1);// public missing arg names
@@ -36,7 +36,7 @@ class TimerClass
 {
 public:
     TimerClass();// public RVA = 0x9AFF90
-    void _CONSTRUCTOR();// public RVA = 0x9AFF90
+    TimerClass* _CONSTRUCTOR();// public RVA = 0x9AFF90
     // no_addr void startTimer();// public
     // no_addr int endTimer();// public
     __int64 freq; // 0x0 Member
@@ -48,7 +48,7 @@ class UtilityT
 {
 public:
     UtilityT();// public RVA = 0x9B0010
-    void _CONSTRUCTOR();// public RVA = 0x9B0010
+    UtilityT* _CONSTRUCTOR();// public RVA = 0x9B0010
     Ogre::Matrix4 cachedViewMatrix; // 0x0 Member
     static Ogre::Ray getMouseRay();// public RVA = 0x9B08C0
     static void mouseTrace(physHit& hit, const Ogre::Vector2& mouse, unsigned int group);// public RVA = 0x9B6710

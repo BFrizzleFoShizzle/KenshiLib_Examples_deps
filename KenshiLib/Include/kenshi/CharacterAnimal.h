@@ -62,7 +62,7 @@ public:
     void eatItemInMouth();// public RVA = 0x5D05A0
     // no_addr void CharacterAnimal(class CharacterAnimal & _a1);// public missing arg names
     CharacterAnimal(GameData * d, Faction * f, hand _handle, float _age);// protected RVA = 0x5C79D0
-    void _CONSTRUCTOR(GameData * d, Faction * f, hand _handle, float _age);// protected RVA = 0x5C79D0
+    CharacterAnimal* _CONSTRUCTOR(GameData * d, Faction * f, hand _handle, float _age);// protected RVA = 0x5C79D0
     virtual ~CharacterAnimal();// protected RVA = 0x5C7A30 vtable offset = 0x0
     void _DESTRUCTOR();// protected RVA = 0x5C7A30 vtable offset = 0x0
     virtual void init();// protected RVA = 0x622EE0 vtable offset = 0x0

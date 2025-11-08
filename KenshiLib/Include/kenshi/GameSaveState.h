@@ -12,11 +12,11 @@ class GameSaveState
 {
 public:
     GameSaveState(const GameSaveState& __that);// public RVA = 0xAE220
-    void _CONSTRUCTOR(const GameSaveState& __that);// public RVA = 0xAE220
+    GameSaveState* _CONSTRUCTOR(const GameSaveState& __that);// public RVA = 0xAE220
     GameSaveState(GameDataContainer* source, GameData* _baseData, GameData* instanceCollectionSavingTo, const PosRotPair& _pos, PosRotPair* _offset, InstanceID* _instanceID);// public RVA = 0x2C2460
-    void _CONSTRUCTOR(GameDataContainer* source, GameData* _baseData, GameData* instanceCollectionSavingTo, const PosRotPair& _pos, PosRotPair* _offset, InstanceID* _instanceID);// public RVA = 0x2C2460
+    GameSaveState* _CONSTRUCTOR(GameDataContainer* source, GameData* _baseData, GameData* instanceCollectionSavingTo, const PosRotPair& _pos, PosRotPair* _offset, InstanceID* _instanceID);// public RVA = 0x2C2460
     GameSaveState();// public RVA = 0x94530
-    void _CONSTRUCTOR();// public RVA = 0x94530
+    GameSaveState* _CONSTRUCTOR();// public RVA = 0x94530
     void generateNewInstanceID();// public RVA = 0x2C1FD0
     void createFromSerialisedInstanceData(GameDataContainer* _container, GameData::ObjectInstance* _instance, const std::string& id);// public RVA = 0x2AD340
     std::string generateStateID(itemType type);// public RVA = 0x2121A0

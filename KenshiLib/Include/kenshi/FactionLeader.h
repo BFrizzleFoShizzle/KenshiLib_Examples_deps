@@ -13,7 +13,7 @@ class FactionLeader
 public:
     // no_addr void FactionLeader(const class FactionLeader & _a1);// public missing arg names
     FactionLeader(Faction * f);// public RVA = 0x807410
-    void _CONSTRUCTOR(Faction * f);// public RVA = 0x807410
+    FactionLeader* _CONSTRUCTOR(Faction * f);// public RVA = 0x807410
     void setNewLeader(Character * _a1);// public RVA = 0x9A8A10 missing arg names
     void getEnemyMissionTargetList(lektor<RootObject *> & out, GameData * mission);// public RVA = 0x9A5C00
     void getGUIData(DatapanelGUI * _a1, int cat);// public RVA = 0x2DD090

@@ -23,7 +23,7 @@ class NxJoint;
 
 enum NxShapeFlag
 {
-    NX_TRIGGER_ON_ENTER = 0x80020008,
+    NX_TRIGGER_ON_ENTER = 0x1,
     NX_TRIGGER_ON_LEAVE = 0x2,
     NX_TRIGGER_ON_STAY = 0x4,
     NX_TRIGGER_ENABLE = 0x7,
@@ -55,7 +55,7 @@ public:
     void _DESTRUCTOR();// protected RVA = 0x7DCF20 vtable offset = 0x8
     // no_addr void NxUserTriggerReport(const class NxUserTriggerReport & _a1);// public missing arg names
     NxUserTriggerReport();// public RVA = 0x7DC880
-    void _CONSTRUCTOR();// public RVA = 0x7DC880
+    NxUserTriggerReport* _CONSTRUCTOR();// public RVA = 0x7DC880
     // no_addr class NxUserTriggerReport & operator=(const class NxUserTriggerReport & _a1);// public missing arg names
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x8 missing arg names
@@ -103,7 +103,7 @@ public:
     // ThreadClass offset = 0x0, length = 0x88
     // no_addr void ThreadWannabe(const class ThreadWannabe & _a1);// public missing arg names
     ThreadWannabe(const std::string& threadname);// protected RVA = 0x25F650
-    void _CONSTRUCTOR(const std::string& threadname);// protected RVA = 0x25F650
+    ThreadWannabe* _CONSTRUCTOR(const std::string& threadname);// protected RVA = 0x25F650
     virtual void backThreadUpdate(float _a1, bool _a2) = 0;// protected vtable offset = 0x10 missing arg names
     CPerfTimer timer; // 0x88 Member
     // no_addr double getTimeStamp();// public
@@ -166,7 +166,7 @@ public:
     // ThreadWannabe offset = 0x0, length = 0xE8
     // no_addr void PhysicsInterface(const class PhysicsInterface & _a1);// public missing arg names
     PhysicsInterface();// public RVA = 0x7E0610
-    void _CONSTRUCTOR();// public RVA = 0x7E0610
+    PhysicsInterface* _CONSTRUCTOR();// public RVA = 0x7E0610
     virtual ~PhysicsInterface();// public RVA = 0x7E08E0 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x7E08E0 vtable offset = 0x0
     PhysicsActual* getBackthread();// public RVA = 0x7DAA10
@@ -217,7 +217,7 @@ public:
     // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x348, length = 0x1
     // no_addr void PhysicsActual(const class PhysicsActual & _a1);// public missing arg names
     PhysicsActual();// public RVA = 0x7DBF70
-    void _CONSTRUCTOR();// public RVA = 0x7DBF70
+    PhysicsActual* _CONSTRUCTOR();// public RVA = 0x7DBF70
     virtual ~PhysicsActual();// public RVA = 0x7DC020 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x7DC020 vtable offset = 0x0
     virtual void updateUT();// public RVA = 0x4CD350 vtable offset = 0x0
@@ -255,7 +255,7 @@ public:
         ogre_unordered_map<hand, hand>::type triggerUpdateMap; // 0x8 Member
         // no_addr void TriggerCallback(const class PhysicsActual::TriggerCallback & _a1);// public missing arg names
         TriggerCallback();// public RVA = 0x7DF690
-        void _CONSTRUCTOR();// public RVA = 0x7DF690
+        TriggerCallback* _CONSTRUCTOR();// public RVA = 0x7DF690
         virtual ~TriggerCallback();// public RVA = 0x7DF6F0 vtable offset = 0x0
         void _DESTRUCTOR();// public RVA = 0x7DF6F0 vtable offset = 0x0
         // no_addr class PhysicsActual::TriggerCallback & operator=(const class PhysicsActual::TriggerCallback & _a1);// public missing arg names
@@ -277,16 +277,16 @@ class NxVec3
 {
 public:
     NxVec3(const NxVec3& v);// public RVA = 0x1B5930
-    void _CONSTRUCTOR(const NxVec3& v);// public RVA = 0x1B5930
+    NxVec3* _CONSTRUCTOR(const NxVec3& v);// public RVA = 0x1B5930
     NxVec3(const float* v);// public RVA = 0x1BE630
-    void _CONSTRUCTOR(const float* v);// public RVA = 0x1BE630
+    NxVec3* _CONSTRUCTOR(const float* v);// public RVA = 0x1BE630
     // no_addr void NxVec3(const struct _Nx3F32 & _a1);// public missing arg names
     NxVec3(float _x, float _y, float _z);// public RVA = 0x1A6D00
-    void _CONSTRUCTOR(float _x, float _y, float _z);// public RVA = 0x1A6D00
+    NxVec3* _CONSTRUCTOR(float _x, float _y, float _z);// public RVA = 0x1A6D00
     NxVec3(float a);// public RVA = 0x7E7BA0
-    void _CONSTRUCTOR(float a);// public RVA = 0x7E7BA0
+    NxVec3* _CONSTRUCTOR(float a);// public RVA = 0x7E7BA0
     NxVec3() {};// public RVA = 0x1AA820
-    void _CONSTRUCTOR();// public RVA = 0x1AA820
+    NxVec3* _CONSTRUCTOR();// public RVA = 0x1AA820
     // no_addr const class NxVec3 & operator=(const struct _Nx3F32 & _a1);// public missing arg names
     const NxVec3& operator=(const NxVec3& v);// public RVA = 0x1AA830
     // no_addr void get(double * _a1);// public missing arg names
@@ -356,9 +356,9 @@ namespace NXU
     class NxuPhysicsCollection;
     enum NXU_FileType
     {
-        FT_BINARY = 0x80020008,
-        FT_XML = 0x1,
-        FT_COLLADA = 0x2
+        FT_BINARY,
+        FT_XML,
+        FT_COLLADA
     };
 
     NxuPhysicsCollection* scaleCopyCollection(const NxuPhysicsCollection* source, const char* newId, const NxVec3& scale, NxPhysicsSDK* sdk);// RVA = 0x20B3B0

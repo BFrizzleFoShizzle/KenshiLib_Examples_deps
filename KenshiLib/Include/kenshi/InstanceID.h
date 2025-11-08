@@ -13,11 +13,11 @@ public:
     int getModIndex() const;// public RVA = 0x459CA0
     static short getModIndex(const std::string & s);// private RVA = 0x6BB650
     InstanceID(const InstanceID & __that);// public RVA = 0x46D060
-    void _CONSTRUCTOR(const InstanceID & __that);// public RVA = 0x46D060
+    InstanceID* _CONSTRUCTOR(const InstanceID & __that);// public RVA = 0x46D060
     InstanceID(const std::string & uid, GameData::ObjectInstance & inst);// public RVA = 0x3846A0
-    void _CONSTRUCTOR(const std::string & uid, GameData::ObjectInstance & inst);// public RVA = 0x3846A0
+    InstanceID* _CONSTRUCTOR(const std::string & uid, GameData::ObjectInstance & inst);// public RVA = 0x3846A0
     InstanceID();// public RVA = 0x382110
-    void _CONSTRUCTOR();// public RVA = 0x382110
+    InstanceID* _CONSTRUCTOR();// public RVA = 0x382110
     void assign(const std::string & id);// public RVA = 0x3851E0
     void clear();// public RVA = 0x571F30
     bool needsSaving(const std::string & mod) const;// public RVA = 0x37F170

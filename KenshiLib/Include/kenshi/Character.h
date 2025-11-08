@@ -184,7 +184,7 @@ public:
     // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0xC0, length = 0x1
     // no_addr void Character(class Character & _a1);// public missing arg names
     Character(GameData * dat, Faction * own, const hand & _handle);// protected RVA = 0x621C70
-    void _CONSTRUCTOR(GameData * dat, Faction * own, const hand & _handle);// protected RVA = 0x621C70
+    Character* _CONSTRUCTOR(GameData * dat, Faction * own, const hand & _handle);// protected RVA = 0x621C70
     bool isImmuneToOffscreenMode();// protected RVA = 0x5C7240
     virtual void init();// protected RVA = 0x620A10 vtable offset = 0x228
     void _NV_init();// protected RVA = 0x620A10 vtable offset = 0x228
@@ -319,9 +319,9 @@ public:
     public:
         // no_addr void WhoSeesMe(class Character::WhoSeesMe & _a1);// public missing arg names
         WhoSeesMe(double timestamp, YesNoMaybe what, float prog);// public RVA = 0x85C5E0
-        void _CONSTRUCTOR(double timestamp, YesNoMaybe what, float prog);// public RVA = 0x85C5E0
+        WhoSeesMe* _CONSTRUCTOR(double timestamp, YesNoMaybe what, float prog);// public RVA = 0x85C5E0
         WhoSeesMe();// public RVA = 0x85C5D0
-        void _CONSTRUCTOR();// public RVA = 0x85C5D0
+        WhoSeesMe* _CONSTRUCTOR();// public RVA = 0x85C5D0
         double lastUpdated; // 0x0 Member
         YesNoMaybe seeState; // 0x8 Member
         float progressOfMaybe; // 0xC Member
@@ -340,7 +340,7 @@ public:
         int index; // 0x18 Member
         // no_addr void AttachedArrowManager(const class Character::AttachedArrowManager & _a1);// public missing arg names
         AttachedArrowManager();// public RVA = 0x636870
-        void _CONSTRUCTOR();// public RVA = 0x636870
+        AttachedArrowManager* _CONSTRUCTOR();// public RVA = 0x636870
         // no_addr class Character::AttachedArrowManager & operator=(const class Character::AttachedArrowManager & _a1);// public missing arg names
         // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
     };
@@ -709,7 +709,7 @@ public:
     struct RagdollMsg
     {
         RagdollMsg(bool on, RagdollPart::Enum part);// public RVA = 0x5C7080
-        void _CONSTRUCTOR(bool on, RagdollPart::Enum part);// public RVA = 0x5C7080
+        RagdollMsg* _CONSTRUCTOR(bool on, RagdollPart::Enum part);// public RVA = 0x5C7080
         bool operator==(const Character::RagdollMsg & m) const;// public RVA = 0x5C7090
         bool on; // 0x0 Member
         RagdollPart::Enum part; // 0x4 Member

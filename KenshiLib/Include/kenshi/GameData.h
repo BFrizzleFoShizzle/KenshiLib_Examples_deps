@@ -21,18 +21,22 @@ class TripleInt;
 class GameDataHeader
 {
 public:
-    GameDataHeader(const GameDataHeader&);// RVA = 0x6CA8C0
-    GameDataHeader(const std::string&, const std::string&);// RVA = 0x55F340
-    GameDataHeader();// RVA = 0x55D600
+    GameDataHeader(const GameDataHeader& __that);// public RVA = 0x87E400
+    GameDataHeader* _CONSTRUCTOR(const GameDataHeader& __that);// public RVA = 0x87E400
+    GameDataHeader(const std::string& name, const std::string& filename);// public RVA = 0x6BD610
+    GameDataHeader* _CONSTRUCTOR(const std::string& name, const std::string& filename);// public RVA = 0x6BD610
+    GameDataHeader();// public RVA = 0x6BB8D0
+    GameDataHeader* _CONSTRUCTOR();// public RVA = 0x6BB8D0
     std::string name; // 0x0 Member
     std::string author; // 0x28 Member
     int version; // 0x50 Member
     std::string description; // 0x58 Member
     lektor<std::string > dependencies; // 0x80 Member
     lektor<std::string > references; // 0x98 Member
-    ~GameDataHeader();// RVA = 0xE3630
-    GameDataHeader& operator=(const GameDataHeader&);// RVA = 0xE74A0
-    // no_addr public void * __vecDelDtor(unsigned int);
+    ~GameDataHeader();// public RVA = 0x138930
+    void _DESTRUCTOR();// public RVA = 0x138930
+    GameDataHeader& operator=(const GameDataHeader& __that);// public RVA = 0x13D8A0
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
 
 class GameData : public Ogre::GeneralAllocatedObject
@@ -46,7 +50,7 @@ public:
     void _DESTRUCTOR();// protected RVA = 0x7A290 vtable offset = 0x0
     // no_addr void GameData(const class GameData & _a1);// public missing arg names
     GameData();// protected RVA = 0x51C560
-    void _CONSTRUCTOR();// protected RVA = 0x51C560
+    GameData* _CONSTRUCTOR();// protected RVA = 0x51C560
     bool isStandalone; // 0x18 Member
     bool isValid() const;// public RVA = 0x42EF10
     GameDataContainer* getSourceContainer() const;// public RVA = 0x8D330
@@ -132,9 +136,9 @@ public:
     {
     public:
         ObjectInstance(const GameData::ObjectInstance& __that);// public RVA = 0xB6080
-        void _CONSTRUCTOR(const GameData::ObjectInstance& __that);// public RVA = 0xB6080
+        ObjectInstance* _CONSTRUCTOR(const GameData::ObjectInstance& __that);// public RVA = 0xB6080
         ObjectInstance();// public RVA = 0xB5160
-        void _CONSTRUCTOR();// public RVA = 0xB5160
+        ObjectInstance* _CONSTRUCTOR();// public RVA = 0xB5160
         Ogre::Vector3 pos; // 0x0 Member
         Ogre::Quaternion rot; // 0xC Member
         std::string refID; // 0x20 Member

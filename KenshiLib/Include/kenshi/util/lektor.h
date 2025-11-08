@@ -47,8 +47,6 @@ public:
             }
         }
 
-
-private:
     uint32_t count;
     uint32_t maxSize;
     T* stuff;

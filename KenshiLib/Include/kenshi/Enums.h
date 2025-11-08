@@ -872,3 +872,10 @@ namespace EffectType
         GLOBAL_POINT
     };
 }
+
+enum SquadType
+{
+    SQ_UNKNOWN,
+    SQ_RESIDENT,
+    SQ_ROAMING
+};

@@ -3,12 +3,14 @@
 #include <kenshi/util/lektor.h>
 #include <kenshi/GameData.h>
 
-class ModInfo : Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> >
+class ModInfo : public Ogre::GeneralAllocatedObject
 {
 public:
     // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
-    ModInfo(const ModInfo&);// RVA = 0x6CAF60
-    ModInfo();// RVA = 0x6B8010
+    ModInfo(const ModInfo& __that);// public RVA = 0x87EC40
+    ModInfo* _CONSTRUCTOR(const ModInfo& __that);// public RVA = 0x87EC40
+    ModInfo();// public RVA = 0x8675C0
+    ModInfo* _CONSTRUCTOR();// public RVA = 0x8675C0
     std::string name; // 0x0 Member
     std::string file; // 0x28 Member
     std::string path; // 0x50 Member
@@ -16,8 +18,9 @@ public:
     bool isBaseMod; // 0x79 Member
     std::string leveldataFolder; // 0x80 Member
     GameDataHeader header; // 0xA8 Member
-    bool getLocale(std::string&, std::string&);// RVA = 0x6BE700
-    ~ModInfo();// RVA = 0x6C93F0
-    ModInfo& operator=(const ModInfo&);// RVA = 0x6CA990
-    // no_addr public void * __vecDelDtor(unsigned int);
+    bool getLocale(std::string& localeId, std::string& localePath) const;// public RVA = 0x86DCB0
+    ~ModInfo();// public RVA = 0x87CB10
+    void _DESTRUCTOR();// public RVA = 0x87CB10
+    ModInfo& operator=(const ModInfo& __that);// public RVA = 0x87E500
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };

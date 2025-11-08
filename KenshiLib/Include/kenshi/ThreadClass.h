@@ -24,7 +24,7 @@ public:
     bool waitForRunningStop_Blocking();// public RVA = 0x7899B0
     // no_addr void ThreadClass(const class ThreadClass & _a1);// public missing arg names
     ThreadClass(const std::string & _name);// public RVA = 0x25F0E0
-    void _CONSTRUCTOR(const std::string & _name);// public RVA = 0x25F0E0
+    ThreadClass* _CONSTRUCTOR(const std::string & _name);// public RVA = 0x25F0E0
     virtual ~ThreadClass();// public RVA = 0x25F550 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x25F550 vtable offset = 0x0
     void setup(float _frameTime, bool infinite, bool _pretendThread);// public RVA = 0x877260

@@ -33,9 +33,9 @@ public:
     public:
         // no_addr void BuildingSwaps(const class Faction::BuildingSwaps & _a1);// public missing arg names
         BuildingSwaps(GameData * data);// public RVA = 0x7FBEC0
-        void _CONSTRUCTOR(GameData * data);// public RVA = 0x7FBEC0
+        BuildingSwaps* _CONSTRUCTOR(GameData * data);// public RVA = 0x7FBEC0
         BuildingSwaps();// public RVA = 0x7F3C40
-        void _CONSTRUCTOR();// public RVA = 0x7F3C40
+        BuildingSwaps* _CONSTRUCTOR();// public RVA = 0x7F3C40
         bool hasReplacement(GameData * building) const;// public RVA = 0x7F3060
         GameData * getReplacement(GameData * building) const;// public RVA = 0x7F2840
         ogre_unordered_set<GameData *>::type toReplace; // 0x0 Member
@@ -54,7 +54,7 @@ public:
     Faction::CharacteristicsData characteristicsData; // 0xC Member
     // no_addr void Faction(const class Faction & _a1);// public missing arg names
     Faction(const std::string & _name);// public RVA = 0x800E00
-    void _CONSTRUCTOR(const std::string & _name);// public RVA = 0x800E00
+    Faction* _CONSTRUCTOR(const std::string & _name);// public RVA = 0x800E00
     ~Faction();// public RVA = 0x801080
     void _DESTRUCTOR();// public RVA = 0x801080
     lektor<std::string > ranks; // 0x18 Member

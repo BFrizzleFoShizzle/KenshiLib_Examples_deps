@@ -56,7 +56,7 @@ public:
 
     // no_addr void SaveManager(const class SaveManager & _a1);// public missing arg names
     SaveManager();// private RVA = 0x47A5E0
-    void _CONSTRUCTOR();// private RVA = 0x47A5E0
+    SaveManager* _CONSTRUCTOR();// private RVA = 0x47A5E0
     ~SaveManager();// private RVA = 0x47A6A0
     void _DESTRUCTOR();// private RVA = 0x47A6A0
     int saveGame(const std::string & location, const std::string & name);// private RVA = 0x374E40

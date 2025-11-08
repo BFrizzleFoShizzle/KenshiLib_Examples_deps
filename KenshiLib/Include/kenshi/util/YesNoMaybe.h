@@ -12,13 +12,13 @@ public:
     };
 
     YesNoMaybe(int a);// public RVA = 0x2C4510
-    void _CONSTRUCTOR(int a);// public RVA = 0x2C4510
+    YesNoMaybe* _CONSTRUCTOR(int a);// public RVA = 0x2C4510
     YesNoMaybe(YesNoMaybe & k);// public RVA = 0x2914B0
-    void _CONSTRUCTOR(YesNoMaybe & k);// public RVA = 0x2914B0
+    YesNoMaybe* _CONSTRUCTOR(YesNoMaybe & k);// public RVA = 0x2914B0
     YesNoMaybe(YesNoMaybe::ynm k);// public RVA = 0x167DF0
-    void _CONSTRUCTOR(YesNoMaybe::ynm k);// public RVA = 0x167DF0
+    YesNoMaybe* _CONSTRUCTOR(YesNoMaybe::ynm k);// public RVA = 0x167DF0
     YesNoMaybe();// public RVA = 0x5C0360
-    void _CONSTRUCTOR();// public RVA = 0x5C0360
+    YesNoMaybe* _CONSTRUCTOR();// public RVA = 0x5C0360
     YesNoMaybe::ynm key; // 0x0 Member
     operator bool() const;// public RVA = 0x2C4530
     operator YesNoMaybe::ynm() const;// public RVA = 0x2C4540

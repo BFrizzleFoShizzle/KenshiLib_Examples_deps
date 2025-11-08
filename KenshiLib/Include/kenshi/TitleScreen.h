@@ -17,7 +17,7 @@ namespace wraps
         // VTable         : (none)
         // no_addr void BaseLayout(const class wraps::BaseLayout & _a1);// public missing arg names
         BaseLayout(const std::string& _layout, MyGUI::Widget* _parent);// protected RVA = 0x11F2A0
-        void _CONSTRUCTOR(const std::string& _layout, MyGUI::Widget* _parent);// protected RVA = 0x11F2A0
+        BaseLayout* _CONSTRUCTOR(const std::string& _layout, MyGUI::Widget* _parent);// protected RVA = 0x11F2A0
         // no_addr void BaseLayout();// protected
         void initialise(const std::string& _layout, MyGUI::Widget* _parent, bool _throw, bool _createFakeWidgets);// protected RVA = 0x119010
         void shutdown();// protected RVA = 0x115E00
@@ -45,7 +45,7 @@ public:
     // VTable         : (none)
     // no_addr void GUIWindow(const class GUIWindow & _a1);// public missing arg names
     GUIWindow();// protected RVA = 0x6E2510
-    void _CONSTRUCTOR();// protected RVA = 0x6E2510
+    GUIWindow* _CONSTRUCTOR();// protected RVA = 0x6E2510
     virtual ~GUIWindow();// protected RVA = 0x6E1940 vtable offset = 0x0
     void _DESTRUCTOR();// protected RVA = 0x6E1940 vtable offset = 0x0
     virtual void clear();// public RVA = 0x402A20 vtable offset = 0x8
@@ -87,7 +87,7 @@ public:
     static TitleScreen* getSingleton();// public RVA = 0x911620
     // no_addr void TitleScreen(const class TitleScreen & _a1);// public missing arg names
     TitleScreen();// public RVA = 0x917740
-    void _CONSTRUCTOR();// public RVA = 0x917740
+    TitleScreen* _CONSTRUCTOR();// public RVA = 0x917740
     virtual ~TitleScreen();// public RVA = 0x9125C0 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x9125C0 vtable offset = 0x0
     virtual void clear();// public RVA = 0x911680 vtable offset = 0x0

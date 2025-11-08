@@ -12,13 +12,13 @@ class SimplePhysXEntity;
 
 enum BuildingRotation
 {
-    ROTATION_NONE = 0x80020008,
-    ROTATION_CONSTANT = 0x1,
-    ROTATION_OUTPUT_BASED = 0x2,
-    ROTATION_WIND_SPEED = 0x3,
-    ROTATION_FACE_WIND_DIRECTION = 0x4,
-    ROTATION_TARGET = 0x5,
-    ROTATION_MATCH_PARENT = 0x6
+    ROTATION_NONE,
+    ROTATION_CONSTANT,
+    ROTATION_OUTPUT_BASED,
+    ROTATION_WIND_SPEED,
+    ROTATION_FACE_WIND_DIRECTION,
+    ROTATION_TARGET,
+    ROTATION_MATCH_PARENT
 };
 
 class PhysicalEntity : public Ogre::GeneralAllocatedObject
@@ -28,7 +28,7 @@ public:
     // VTable         : (none)
     // no_addr void PhysicalEntity(const class PhysicalEntity & _a1);// public missing arg names
     PhysicalEntity(Ogre::MovableObject* entity, char floor, GameData* _mat, GameData* part, bool instanced);// public RVA = 0x4CD570
-    void _CONSTRUCTOR(Ogre::MovableObject* entity, char floor, GameData* _mat, GameData* part, bool instanced);// public RVA = 0x4CD570
+    PhysicalEntity* _CONSTRUCTOR(Ogre::MovableObject* entity, char floor, GameData* _mat, GameData* part, bool instanced);// public RVA = 0x4CD570
     virtual ~PhysicalEntity();// public RVA = 0x4CB300 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x4CB300 vtable offset = 0x0
     Ogre::MovableObject* ent; // 0x8 Member
@@ -59,13 +59,13 @@ public:
         virtual void weatherUpdated(WeatherInstance* _a1, bool _a2) = 0;// public vtable offset = 0x0 missing arg names
         // no_addr void Listener(const class WeatherRegion::Listener & _a1);// public missing arg names
         Listener();// public RVA = 0xFCCB0
-        void _CONSTRUCTOR();// public RVA = 0xFCCB0
+        Listener* _CONSTRUCTOR();// public RVA = 0xFCCB0
         // no_addr class WeatherRegion::Listener & operator=(const class WeatherRegion::Listener & _a1);// public missing arg names
     };
     // Typedef        : WeatherListenerList
     // no_addr void WeatherRegion(const class WeatherRegion & _a1);// public missing arg names
     WeatherRegion(AreaBiomeGroup* biomeGroup);// public RVA = 0x9DE120
-    void _CONSTRUCTOR(AreaBiomeGroup* biomeGroup);// public RVA = 0x9DE120
+    WeatherRegion* _CONSTRUCTOR(AreaBiomeGroup* biomeGroup);// public RVA = 0x9DE120
     ~WeatherRegion();// public RVA = 0x9DB070
     void _DESTRUCTOR();// public RVA = 0x9DB070
     void reset();// public RVA = 0x9DCED0
@@ -115,7 +115,7 @@ public:
         // PhysicalEntity offset = 0x0, length = 0x38
         // no_addr void StaticEnt(const class PhysicsCollection::StaticEnt & _a1);// public missing arg names
         StaticEnt(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x546690
-        void _CONSTRUCTOR(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x546690
+        StaticEnt* _CONSTRUCTOR(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x546690
         virtual void update(float spd);// public RVA = 0x569D50 vtable offset = 0x8
         void _NV_update(float spd);// public RVA = 0x569D50 vtable offset = 0x8
         virtual float updateAim(float rotSpeed, const Ogre::Vector3& target);// public RVA = 0x569D60 vtable offset = 0x10
@@ -134,7 +134,7 @@ public:
         // WeatherRegion::Listener offset = 0x38, length = 0x8
         // no_addr void RotatingEnt(const class PhysicsCollection::RotatingEnt & _a1);// public missing arg names
         RotatingEnt(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x555AD0
-        void _CONSTRUCTOR(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x555AD0
+        RotatingEnt* _CONSTRUCTOR(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x555AD0
         virtual ~RotatingEnt();// public RVA = 0x547470 vtable offset = 0x0
         void _DESTRUCTOR();// public RVA = 0x547470 vtable offset = 0x0
         virtual void update(float productionSpeed);// public RVA = 0x547520 vtable offset = 0x0
@@ -169,7 +169,7 @@ public:
     {
     public:
         LightEnt(GameData* data, bool indoors, Ogre::SceneNode* parentNode);// public RVA = 0x553460
-        void _CONSTRUCTOR(GameData* data, bool indoors, Ogre::SceneNode* parentNode);// public RVA = 0x553460
+        LightEnt* _CONSTRUCTOR(GameData* data, bool indoors, Ogre::SceneNode* parentNode);// public RVA = 0x553460
         ~LightEnt();// public RVA = 0x4CB2D0
         void _DESTRUCTOR();// public RVA = 0x4CB2D0
         Ogre::Light* light; // 0x0 Member
@@ -192,7 +192,7 @@ public:
     lektor<PhysicsCollection::LightEnt*> lights; // 0x30 Member
     // no_addr void PhysicsCollection(const class PhysicsCollection & _a1);// public missing arg names
     PhysicsCollection();// public RVA = 0x56EC00
-    void _CONSTRUCTOR();// public RVA = 0x56EC00
+    PhysicsCollection* _CONSTRUCTOR();// public RVA = 0x56EC00
     // no_addr class PhysicsCollection & operator=(const class PhysicsCollection & _a1);// public missing arg names
     // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };

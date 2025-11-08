@@ -19,17 +19,17 @@ class hand
 public:
     // VTable         : (none)
     hand(GameData* fromLoadedState, itemType typ);// public RVA = 0x7941C0
-    void _CONSTRUCTOR(GameData* fromLoadedState, itemType typ);// public RVA = 0x7941C0
+    hand* _CONSTRUCTOR(GameData* fromLoadedState, itemType typ);// public RVA = 0x7941C0
     hand(RootObjectBase* from);// public RVA = 0x791360
-    void _CONSTRUCTOR(RootObjectBase* from);// public RVA = 0x791360
+    hand* _CONSTRUCTOR(RootObjectBase* from);// public RVA = 0x791360
     hand(const int from);// public RVA = 0xD5EF0
-    void _CONSTRUCTOR(const int from);// public RVA = 0xD5EF0
+    hand* _CONSTRUCTOR(const int from);// public RVA = 0xD5EF0
     hand(const hand& from);// public RVA = 0xD1AE0
-    void _CONSTRUCTOR(const hand& from);// public RVA = 0xD1AE0
+    hand* _CONSTRUCTOR(const hand& from);// public RVA = 0xD1AE0
     hand(unsigned int _index, unsigned int _serial, itemType _type, unsigned int _container, unsigned int _containerSerial);// public RVA = 0xCCFF0
-    void _CONSTRUCTOR(unsigned int _index, unsigned int _serial, itemType _type, unsigned int _container, unsigned int _containerSerial);// public RVA = 0xCCFF0
+    hand* _CONSTRUCTOR(unsigned int _index, unsigned int _serial, itemType _type, unsigned int _container, unsigned int _containerSerial);// public RVA = 0xCCFF0
     hand();// public RVA = 0xCCFC0
-    void _CONSTRUCTOR();// public RVA = 0xCCFC0
+    hand* _CONSTRUCTOR();// public RVA = 0xCCFC0
     itemType type; // 0x8 Member
     unsigned int container; // 0xC Member
     unsigned int containerSerial; // 0x10 Member

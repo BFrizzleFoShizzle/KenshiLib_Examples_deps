@@ -25,7 +25,7 @@ public:
     int validKey; // 0x8 Member
     // no_addr void RootObjectBase(const class RootObjectBase & _a1);// public missing arg names
     RootObjectBase(GameData * d, Faction * ownr, hand h);// public RVA = 0x593E00
-    void _CONSTRUCTOR(GameData * d, Faction * ownr, hand h);// public RVA = 0x593E00
+    RootObjectBase* _CONSTRUCTOR(GameData * d, Faction * ownr, hand h);// public RVA = 0x593E00
     virtual ~RootObjectBase();// public RVA = 0x594FC0 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x594FC0 vtable offset = 0x0
     bool isValid() const;// public RVA = 0x32D8E0

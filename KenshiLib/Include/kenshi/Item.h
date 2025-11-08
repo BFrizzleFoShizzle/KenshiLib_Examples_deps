@@ -11,44 +11,57 @@
 class BuildingItemGroup;
 class InventorySection;
 
-class InventoryItemBase : public RootObject, Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> >
+class InventoryItemBase : public RootObject, public Ogre::GeneralAllocatedObject
 {
 public:
 	// RootObject offset = 0x0, length = 0xC0
 	// Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0xC0, length = 0x1
-	// no_addr public virtual void activate(bool, const class Ogre::Vector3 &, const class Ogre::Quaternion &, bool, class YesNoMaybe, bool);// vtable offset = 0x228
-	// no_addr public virtual void activate(bool, class YesNoMaybe);// vtable offset = 0x230
-	// no_addr public virtual void deactivate();// vtable offset = 0x238
-	// no_addr public virtual void resetAfterCopy();// vtable offset = 0x240
-	void resetCharges(bool);// RVA = 0x5DFAE0
-	void getStolenItemGUIInfo(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x6194A0
-	void getBuyBackGUIInfo(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x6199A0
-	itemType getItemType();// RVA = 0x1FFBD0
-	virtual float getItemWeightSingle();// RVA = 0x91420// vtable offset = 0x248
-	virtual float getItemWeight();// RVA = 0x91430// vtable offset = 0x250
-	// no_addr public virtual class GameData * _serialise(class GameDataContainer *, enum itemType);// vtable offset = 0x258
-	// no_addr public virtual void _loadFromSerialise(class GameDataContainer *, class GameData *);// vtable offset = 0x260
-	// no_addr public virtual class GameSaveState serialise(class GameDataContainer *, class GameData *, class PosRotPair *);// vtable offset = 0x0
-	// no_addr public virtual void loadFromSerialise(class GameSaveState *);// vtable offset = 0x0
-	// no_addr public virtual class GameData * serialiseInInventory(class GameDataContainer *, class GameData *);// vtable offset = 0x268
-	// no_addr public virtual void loadFromSerialiseInInventory(class GameDataContainer *, class GameData *);// vtable offset = 0x270
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x626730// vtable offset = 0x278
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x617AD0// vtable offset = 0x280
-	virtual void getGUIData(DatapanelGUI*, int);// RVA = 0x60D8C0// vtable offset = 0x0
-	int getAvgPrice();// RVA = 0x609B70
-	virtual int getValueSingle(bool);// RVA = 0x621590// vtable offset = 0x288
-	virtual int getValueAll(bool);// RVA = 0x609BB0// vtable offset = 0x290
-	virtual int getMaxAffordableNum(int, bool);// RVA = 0x5DFB30// vtable offset = 0x298
-	int isStackable(InventorySection*);// RVA = 0x5E0600
-	bool canStackWith(InventoryItemBase*);// RVA = 0x5DF9E0
-	virtual Inventory* getInventory();// RVA = 0x5E8DB0// vtable offset = 0x0
-	virtual bool isSameAs(InventoryItemBase*);// RVA = 0x5DFA80// vtable offset = 0x2A0
-	bool onGround();// RVA = 0x2BAB10
-	void addQuantity(int&, Item*, InventorySection*);// RVA = 0x5E0790
-	virtual const hand& getProperOwner();// RVA = 0x91450// vtable offset = 0x2A8
-	virtual void setProperOwner(const hand&);// RVA = 0x91460// vtable offset = 0x2B0
-	bool isResearchArtifact();// RVA = 0x108A70
-	virtual int getLevel();// RVA = 0x5E8DC0// vtable offset = 0x2B8
+	virtual void activate(bool _a1, const Ogre::Vector3& _a2, const Ogre::Quaternion& _a3, bool _a4, YesNoMaybe _a5, bool _a6) = 0;// public vtable offset = 0x228 missing arg names
+	virtual void activate(bool _a1, YesNoMaybe _a2) = 0;// public vtable offset = 0x230 missing arg names
+	virtual void deactivate() = 0;// public vtable offset = 0x238
+	virtual void resetAfterCopy() = 0;// public vtable offset = 0x240
+	void resetCharges(bool randomise);// public RVA = 0x75C360
+	void getStolenItemGUIInfo(Ogre::vector<StringPair>::type& lines);// public RVA = 0x79FC40
+	void getBuyBackGUIInfo(Ogre::vector<StringPair>::type& lines);// public RVA = 0x7A0140
+	itemType getItemType() const;// public RVA = 0x296710
+	virtual float getItemWeightSingle() const;// public RVA = 0xD20E0 vtable offset = 0x248
+	float _NV_getItemWeightSingle() const;// public RVA = 0xD20E0 vtable offset = 0x248
+	virtual float getItemWeight() const;// public RVA = 0xD20F0 vtable offset = 0x250
+	float _NV_getItemWeight() const;// public RVA = 0xD20F0 vtable offset = 0x250
+	virtual GameData* _serialise(GameDataContainer* _a1, itemType _a2) = 0;// public vtable offset = 0x258 missing arg names
+	virtual void _loadFromSerialise(GameDataContainer* _a1, GameData* _a2) = 0;// public vtable offset = 0x260 missing arg names
+	virtual GameSaveState serialise(GameDataContainer* _a1, GameData* _a2, PosRotPair* _a3) = 0;// public vtable offset = 0x0 missing arg names
+	virtual void loadFromSerialise(GameSaveState* _a1) = 0;// public vtable offset = 0x0 missing arg names
+	virtual GameData* serialiseInInventory(GameDataContainer* _a1, GameData* _a2) = 0;// public vtable offset = 0x268 missing arg names
+	virtual void loadFromSerialiseInInventory(GameDataContainer* _a1, GameData* _a2) = 0;// public vtable offset = 0x270 missing arg names
+	virtual void getTooltipData1(Ogre::vector<StringPair>::type& lines);// public RVA = 0x7ACED0 vtable offset = 0x278
+	void _NV_getTooltipData1(Ogre::vector<StringPair>::type& lines);// public RVA = 0x7ACED0 vtable offset = 0x278
+	virtual void getTooltipData2(Ogre::vector<StringPair>::type& lines);// public RVA = 0x79E270 vtable offset = 0x280
+	void _NV_getTooltipData2(Ogre::vector<StringPair>::type& lines);// public RVA = 0x79E270 vtable offset = 0x280
+	virtual void getGUIData(DatapanelGUI* datapanel, int category);// public RVA = 0x794060 vtable offset = 0x0
+	void _NV_getGUIData(DatapanelGUI* datapanel, int category);// public RVA = 0x794060 vtable offset = 0x0
+	int getAvgPrice();// public RVA = 0x790310
+	virtual int getValueSingle(bool isPlayer) const;// public RVA = 0x7A7D30 vtable offset = 0x288
+	int _NV_getValueSingle(bool isPlayer) const;// public RVA = 0x7A7D30 vtable offset = 0x288
+	virtual int getValueAll(bool isPlayer) const;// public RVA = 0x790350 vtable offset = 0x290
+	int _NV_getValueAll(bool isPlayer) const;// public RVA = 0x790350 vtable offset = 0x290
+	virtual int getMaxAffordableNum(int cashLimit, bool isPlayer);// public RVA = 0x75C3B0 vtable offset = 0x298
+	int _NV_getMaxAffordableNum(int cashLimit, bool isPlayer);// public RVA = 0x75C3B0 vtable offset = 0x298
+	int isStackable(InventorySection* section) const;// public RVA = 0x75CE80
+	bool canStackWith(InventoryItemBase* other) const;// public RVA = 0x75C260
+	virtual Inventory* getInventory() const;// public RVA = 0x767960 vtable offset = 0x0
+	Inventory* _NV_getInventory() const;// public RVA = 0x767960 vtable offset = 0x0
+	virtual bool isSameAs(InventoryItemBase* who) const;// public RVA = 0x75C300 vtable offset = 0x2A0
+	bool _NV_isSameAs(InventoryItemBase* who) const;// public RVA = 0x75C300 vtable offset = 0x2A0
+	bool onGround() const;// public RVA = 0x37D770
+	void addQuantity(int& amount, Item* addedItem, InventorySection* section);// public RVA = 0x75D010
+	virtual const hand& getProperOwner() const;// public RVA = 0xD2110 vtable offset = 0x2A8
+	const hand& _NV_getProperOwner() const;// public RVA = 0xD2110 vtable offset = 0x2A8
+	virtual void setProperOwner(const hand& h);// public RVA = 0xD2120 vtable offset = 0x2B0
+	void _NV_setProperOwner(const hand& h);// public RVA = 0xD2120 vtable offset = 0x2B0
+	bool isResearchArtifact() const;// public RVA = 0x166EB0
+	virtual int getLevel() const;// public RVA = 0x767970 vtable offset = 0x2B8
+	int _NV_getLevel() const;// public RVA = 0x767970 vtable offset = 0x2B8
 	GameData* manufacturerData; // 0xC0 Member
 	GameData* materialData; // 0xC8 Member
 	GameData* coloriseData; // 0xD0 Member
@@ -68,20 +81,22 @@ public:
 	int itemWidth; // 0x130 Member
 	int itemHeight; // 0x134 Member
 	bool deathItem; // 0x138 Member
-	const char* getItemSound();// RVA = 0x5E08D0
-	bool isStolen(bool);// RVA = 0x616B50
-	// no_addr public void InventoryItemBase(const class InventoryItemBase &);
-	InventoryItemBase(GameData*, hand, GameData*, GameData*);// RVA = 0x5E2060
-	virtual ~InventoryItemBase();// RVA = 0x5E0010// vtable offset = 0x0
-	void getTooltipTradeValue(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x616DA0
-	float merchantPriceMod();// RVA = 0x616CD0
+	const char* getItemSound() const;// public RVA = 0x75D150
+	bool isStolen(bool includeUnknown) const;// public RVA = 0x79D2F0
+	// no_addr void InventoryItemBase(const class InventoryItemBase & _a1);// public missing arg names
+	InventoryItemBase(GameData* dat, hand _handle, GameData* manufacturerData, GameData* materialData);// protected RVA = 0x75E8E0
+	InventoryItemBase* _CONSTRUCTOR(GameData* dat, hand _handle, GameData* manufacturerData, GameData* materialData);// protected RVA = 0x75E8E0
+	virtual ~InventoryItemBase();// protected RVA = 0x75C890 vtable offset = 0x0
+	void _DESTRUCTOR();// protected RVA = 0x75C890 vtable offset = 0x0
+	void getTooltipTradeValue(Ogre::vector<StringPair>::type& lines);// protected RVA = 0x79D540
+	float merchantPriceMod() const;// protected RVA = 0x79D470
 	itemType objectType; // 0x13C Member
 	hand properOwner; // 0x140 Member
 	hand _whosInventoryWeAreIn; // 0x160 Member
 	bool _isResearchArtifact; // 0x180 Member
 	BuildingItemGroup* itemGroup; // 0x188 Member
-	// no_addr public class InventoryItemBase & operator=(const class InventoryItemBase &);
-	// no_addr protected virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
+	// no_addr class InventoryItemBase & operator=(const class InventoryItemBase & _a1);// public missing arg names
+	// virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
 };
 
 class Gear;
@@ -90,63 +105,103 @@ class Armour;
 class Weapon;
 class LockedArmour;
 class SimplePhysXEntity;
-
 class Item : public InventoryItemBase
 {
 public:
 	// InventoryItemBase offset = 0x0, length = 0x190
-	static bool isFood(GameData*);// RVA = 0x29A330
-	virtual Gear* isGear();// RVA = 0x91490// vtable offset = 0x2C0
-	virtual itemType getClassType();// RVA = 0x914A0// vtable offset = 0x2C8
-	virtual void resetAfterCopy();// RVA = 0x5DFC20// vtable offset = 0x0
-	virtual void activate(bool, const Ogre::Vector3&, const Ogre::Quaternion&, bool, YesNoMaybe, bool);// RVA = 0x5DFF20// vtable offset = 0x0
-	virtual void activate(bool, YesNoMaybe);// RVA = 0x5E0090// vtable offset = 0x0
-	virtual void deactivate();// RVA = 0x5DFB90// vtable offset = 0x0
-	virtual void setPositionRotation(const Ogre::Vector3&, const Ogre::Quaternion&, bool);// RVA = 0x5DFBD0// vtable offset = 0x2D0
-	virtual Crossbow* isCrossbow();// RVA = 0x914B0// vtable offset = 0x2D8
-	virtual Armour* isArmour();// RVA = 0x914C0// vtable offset = 0x2E0
-	virtual Weapon* isWeapon();// RVA = 0x914D0// vtable offset = 0x2E8
-	virtual LockedArmour* isLockedArmour();// RVA = 0x914E0// vtable offset = 0x2F0
-	virtual Faction* isAFactionUniform();// RVA = 0x914F0// vtable offset = 0x2F8
-	virtual bool isPhysical();// RVA = 0x91500// vtable offset = 0x0
-	virtual void setVisible(bool);// RVA = 0x91520// vtable offset = 0x0
-	virtual bool getVisible();// RVA = 0x91560// vtable offset = 0x0
-	virtual std::string getModelName();// RVA = 0x5E2870// vtable offset = 0x300
-	virtual Inventory* getInventory();// RVA = 0x91570// vtable offset = 0x0
-	virtual bool hasIngredients();// RVA = 0x934B0// vtable offset = 0x308
-	virtual bool isGoodFood();// RVA = 0x91580// vtable offset = 0x310
-	virtual Ogre::Entity* getEntity();// RVA = 0x915B0// vtable offset = 0x318
-	virtual TimeOfDay getTimeout();// RVA = 0x92200// vtable offset = 0x320
-	virtual GameData* _serialise(GameDataContainer*, itemType);// RVA = 0x5E2F50// vtable offset = 0x0
-	virtual void _loadFromSerialise(GameDataContainer*, GameData*);// RVA = 0x5E3AC0// vtable offset = 0x0
-	virtual GameSaveState serialise(GameDataContainer*, GameData*, PosRotPair*);// RVA = 0x5E04A0// vtable offset = 0x0
-	virtual void loadFromSerialise(GameSaveState*);// RVA = 0x5E0320// vtable offset = 0x0
-	virtual GameData* serialiseInInventory(GameDataContainer*, GameData*);// RVA = 0x5DFC50// vtable offset = 0x0
-	virtual void loadFromSerialiseInInventory(GameDataContainer*, GameData*);// RVA = 0x5DFC70// vtable offset = 0x0
-	// no_addr public class Ogre::Entity * createPhysicalForInventoryIconPicture();
-	virtual float getCraftTime();// RVA = 0x937B0// vtable offset = 0x328
-	virtual float getCraftMaterialMult();// RVA = 0x915D0// vtable offset = 0x330
-	virtual int getLevel();// RVA = 0x915E0// vtable offset = 0x0
-	virtual void createItemEntityCallback_Equipping(Ogre::Entity*, Ogre::SceneNode*);// RVA = 0x915F0// vtable offset = 0x338
-	virtual void destroyItemEntityCallback_Equipping();// RVA = 0x91600// vtable offset = 0x340
-	virtual void notifyTheftFrom(RootObject*);// RVA = 0x60AD80// vtable offset = 0x348
-	virtual void notifyTheftFrom(const hand&);// RVA = 0x60AE00// vtable offset = 0x350
-	static const hand& findProperOwner(RootObject*);// RVA = 0x60AD10
-	static const hand& findProperOwner(const hand&);// RVA = 0x60AC80
-	virtual void setInventoryWeAreIn(const hand&);// RVA = 0x91610// vtable offset = 0x358
-	const hand& getInventoryWeAreIn();// RVA = 0x46F940
-	bool isPersistant();// RVA = 0x2BAB40
-	void setPersistant(const hand&);// RVA = 0x752630
-	void setPersistant(bool);// RVA = 0x2815A0
-	bool persistantOwnerExists();// RVA = 0x2C2A80
-	// no_addr public void Item(const class Item &);
-	Item(GameData*, GameData*, GameData*, hand);// RVA = 0x5E25C0
-	virtual ~Item();// RVA = 0x5E0280// vtable offset = 0x0
-	virtual bool createPhysical();// RVA = 0x5E6510// vtable offset = 0x0
-	virtual void destroyPhysical();// RVA = 0x5E0160// vtable offset = 0x0
-	virtual void loadUnloadCheck();// RVA = 0x5E0B40// vtable offset = 0x0
-	void createItemEntityCallback(Ogre::SharedPtr<Ogre::Resource>, void*);// RVA = 0x5E4C50
-	virtual void itemEntityCreated(Ogre::Entity*);// RVA = 0x92210// vtable offset = 0x360
+	static bool isFood(GameData* f);// public RVA = 0x3551F0
+	virtual Gear* isGear();// public RVA = 0xD2160 vtable offset = 0x2C0
+	Gear* _NV_isGear();// public RVA = 0xD2160 vtable offset = 0x2C0
+	virtual itemType getClassType() const;// public RVA = 0xD2170 vtable offset = 0x2C8
+	itemType _NV_getClassType() const;// public RVA = 0xD2170 vtable offset = 0x2C8
+	virtual void resetAfterCopy();// public RVA = 0x75C4A0 vtable offset = 0x0
+	void _NV_resetAfterCopy();// public RVA = 0x75C4A0 vtable offset = 0x0
+	virtual void activate(bool createPhysical, const Ogre::Vector3& position, const Ogre::Quaternion& rotation, bool fixedPosition, YesNoMaybe bareWeapon, bool dynamicPhysics);// public RVA = 0x75C7A0 vtable offset = 0x0
+	void _NV_activate(bool createPhysical, const Ogre::Vector3& position, const Ogre::Quaternion& rotation, bool fixedPosition, YesNoMaybe bareWeapon, bool dynamicPhysics);// public RVA = 0x75C7A0 vtable offset = 0x0
+	virtual void activate(bool createPhysical, YesNoMaybe bareWeapon);// public RVA = 0x75C910 vtable offset = 0x0
+	void _NV_activate(bool createPhysical, YesNoMaybe bareWeapon);// public RVA = 0x75C910 vtable offset = 0x0
+	virtual void deactivate();// public RVA = 0x75C410 vtable offset = 0x0
+	void _NV_deactivate();// public RVA = 0x75C410 vtable offset = 0x0
+	virtual void setPositionRotation(const Ogre::Vector3& position, const Ogre::Quaternion& rotation, bool fixedPosition);// public RVA = 0x75C450 vtable offset = 0x2D0
+	void _NV_setPositionRotation(const Ogre::Vector3& position, const Ogre::Quaternion& rotation, bool fixedPosition);// public RVA = 0x75C450 vtable offset = 0x2D0
+	virtual Crossbow* isCrossbow();// public RVA = 0xD2180 vtable offset = 0x2D8
+	Crossbow* _NV_isCrossbow();// public RVA = 0xD2180 vtable offset = 0x2D8
+	virtual Armour* isArmour();// public RVA = 0xD2190 vtable offset = 0x2E0
+	Armour* _NV_isArmour();// public RVA = 0xD2190 vtable offset = 0x2E0
+	virtual Weapon* isWeapon();// public RVA = 0xD21A0 vtable offset = 0x2E8
+	Weapon* _NV_isWeapon();// public RVA = 0xD21A0 vtable offset = 0x2E8
+	virtual LockedArmour* isLockedArmour();// public RVA = 0xD21B0 vtable offset = 0x2F0
+	LockedArmour* _NV_isLockedArmour();// public RVA = 0xD21B0 vtable offset = 0x2F0
+	virtual Faction* isAFactionUniform();// public RVA = 0xD21C0 vtable offset = 0x2F8
+	Faction* _NV_isAFactionUniform();// public RVA = 0xD21C0 vtable offset = 0x2F8
+	virtual bool isPhysical() const;// public RVA = 0xD21D0 vtable offset = 0x0
+	bool _NV_isPhysical() const;// public RVA = 0xD21D0 vtable offset = 0x0
+	virtual void setVisible(bool on);// public RVA = 0xD21F0 vtable offset = 0x0
+	void _NV_setVisible(bool on);// public RVA = 0xD21F0 vtable offset = 0x0
+	virtual bool getVisible() const;// public RVA = 0xD2230 vtable offset = 0x0
+	bool _NV_getVisible() const;// public RVA = 0xD2230 vtable offset = 0x0
+	virtual std::string getModelName();// public RVA = 0x75F0F0 vtable offset = 0x300
+	std::string _NV_getModelName();// public RVA = 0x75F0F0 vtable offset = 0x300
+	virtual Inventory* getInventory() const;// public RVA = 0xD2240 vtable offset = 0x0
+	Inventory* _NV_getInventory() const;// public RVA = 0xD2240 vtable offset = 0x0
+	virtual bool hasIngredients();// public RVA = 0xD4820 vtable offset = 0x308
+	bool _NV_hasIngredients();// public RVA = 0xD4820 vtable offset = 0x308
+	virtual bool isGoodFood();// public RVA = 0xD2250 vtable offset = 0x310
+	bool _NV_isGoodFood();// public RVA = 0xD2250 vtable offset = 0x310
+	virtual Ogre::Entity* getEntity() const;// public RVA = 0xD2290 vtable offset = 0x318
+	Ogre::Entity* _NV_getEntity() const;// public RVA = 0xD2290 vtable offset = 0x318
+	virtual TimeOfDay getTimeout() const;// public RVA = 0xD3140 vtable offset = 0x320
+	TimeOfDay _NV_getTimeout() const;// public RVA = 0xD3140 vtable offset = 0x320
+	virtual GameData* _serialise(GameDataContainer* container, itemType type);// public RVA = 0x75F7D0 vtable offset = 0x0
+	GameData* _NV__serialise(GameDataContainer* container, itemType type);// public RVA = 0x75F7D0 vtable offset = 0x0
+	virtual void _loadFromSerialise(GameDataContainer* container, GameData* state);// public RVA = 0x760340 vtable offset = 0x0
+	void _NV__loadFromSerialise(GameDataContainer* container, GameData* state);// public RVA = 0x760340 vtable offset = 0x0
+	virtual GameSaveState serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x75CD20 vtable offset = 0x0
+	GameSaveState _NV_serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x75CD20 vtable offset = 0x0
+	virtual void loadFromSerialise(GameSaveState* saveState);// public RVA = 0x75CBA0 vtable offset = 0x0
+	void _NV_loadFromSerialise(GameSaveState* saveState);// public RVA = 0x75CBA0 vtable offset = 0x0
+	virtual GameData* serialiseInInventory(GameDataContainer* container, GameData* refList);// public RVA = 0x75C4D0 vtable offset = 0x0
+	GameData* _NV_serialiseInInventory(GameDataContainer* container, GameData* refList);// public RVA = 0x75C4D0 vtable offset = 0x0
+	virtual void loadFromSerialiseInInventory(GameDataContainer* container, GameData* state);// public RVA = 0x75C4F0 vtable offset = 0x0
+	void _NV_loadFromSerialiseInInventory(GameDataContainer* container, GameData* state);// public RVA = 0x75C4F0 vtable offset = 0x0
+	// no_addr class Ogre::Entity * createPhysicalForInventoryIconPicture();// public
+	virtual float getCraftTime();// public RVA = 0xD4BD0 vtable offset = 0x328
+	float _NV_getCraftTime();// public RVA = 0xD4BD0 vtable offset = 0x328
+	virtual float getCraftMaterialMult();// public RVA = 0xD22B0 vtable offset = 0x330
+	float _NV_getCraftMaterialMult();// public RVA = 0xD22B0 vtable offset = 0x330
+	virtual int getLevel() const;// public RVA = 0xD22C0 vtable offset = 0x0
+	int _NV_getLevel() const;// public RVA = 0xD22C0 vtable offset = 0x0
+	virtual void createItemEntityCallback_Equipping(Ogre::Entity* ent, Ogre::SceneNode* node);// public RVA = 0xD22D0 vtable offset = 0x338
+	void _NV_createItemEntityCallback_Equipping(Ogre::Entity* ent, Ogre::SceneNode* node);// public RVA = 0xD22D0 vtable offset = 0x338
+	virtual void destroyItemEntityCallback_Equipping();// public RVA = 0xD22E0 vtable offset = 0x340
+	void _NV_destroyItemEntityCallback_Equipping();// public RVA = 0xD22E0 vtable offset = 0x340
+	virtual void notifyTheftFrom(RootObject* obj);// public RVA = 0x791520 vtable offset = 0x348
+	void _NV_notifyTheftFrom(RootObject* obj);// public RVA = 0x791520 vtable offset = 0x348
+	virtual void notifyTheftFrom(const hand& owner);// public RVA = 0x7915A0 vtable offset = 0x350
+	void _NV_notifyTheftFrom(const hand& owner);// public RVA = 0x7915A0 vtable offset = 0x350
+	static const hand& findProperOwner(RootObject* obj);// public RVA = 0x7914B0
+	static const hand& findProperOwner(const hand& handle);// public RVA = 0x791420
+	virtual void setInventoryWeAreIn(const hand& h);// public RVA = 0xD22F0 vtable offset = 0x358
+	void _NV_setInventoryWeAreIn(const hand& h);// public RVA = 0xD22F0 vtable offset = 0x358
+	const hand& getInventoryWeAreIn() const;// public RVA = 0x595DC0
+	bool isPersistant() const;// public RVA = 0x37D7B0
+	void setPersistant(const hand& anchor);// public RVA = 0x925520
+	void setPersistant(bool p);// public RVA = 0x336860
+	bool persistantOwnerExists() const;// public RVA = 0x386F90
+	// no_addr void Item(const class Item & _a1);// public missing arg names
+	Item(GameData* baseData, GameData* companyData, GameData* _materialData, hand _handle);// protected RVA = 0x75EE40
+	Item* _CONSTRUCTOR(GameData* baseData, GameData* companyData, GameData* _materialData, hand _handle);// protected RVA = 0x75EE40
+	virtual ~Item();// protected RVA = 0x75CB00 vtable offset = 0x0
+	void _DESTRUCTOR();// protected RVA = 0x75CB00 vtable offset = 0x0
+	virtual bool createPhysical();// protected RVA = 0x762D90 vtable offset = 0x0
+	bool _NV_createPhysical();// protected RVA = 0x762D90 vtable offset = 0x0
+	virtual void destroyPhysical();// protected RVA = 0x75C9E0 vtable offset = 0x0
+	void _NV_destroyPhysical();// protected RVA = 0x75C9E0 vtable offset = 0x0
+	virtual void loadUnloadCheck();// protected RVA = 0x75D3C0 vtable offset = 0x0
+	void _NV_loadUnloadCheck();// protected RVA = 0x75D3C0 vtable offset = 0x0
+	void createItemEntityCallback(Ogre::SharedPtr<Ogre::Resource> _a1, void* entityData);// protected RVA = 0x7614D0
+	virtual void itemEntityCreated(Ogre::Entity* _a1);// protected RVA = 0xD3150 vtable offset = 0x360 missing arg names
+	void _NV_itemEntityCreated(Ogre::Entity* _a1);// protected RVA = 0xD3150 vtable offset = 0x360 missing arg names
 	bool physicalShouldExist; // 0x190 Member
 	bool existAsBareWeapon; // 0x191 Member
 	hand persistant; // 0x198 Member
@@ -158,191 +213,11 @@ public:
 	bool fixedPhysicalPosition; // 0x1D9 Member
 	bool useDynamicPhysics; // 0x1DA Member
 	Ogre::Entity* loadingEntity; // 0x1E0 Member
-	// no_addr public class Item & operator=(const class Item &);
-	// no_addr protected virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
+	// no_addr class Item & operator=(const class Item & _a1);// public missing arg names
+	// virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
 };
 
-class Gear : public Item
-{
-public:
-	// Item offset = 0x0, length = 0x1E8
-	// no_addr public void Gear(const class Gear &);
-	Gear(GameData*, GameData*, GameData*, hand, int, Faction*);// RVA = 0x92140
-	virtual Gear* isGear();// RVA = 0x92220// vtable offset = 0x0
-	virtual float getLevel01();// RVA = 0x92230// vtable offset = 0x368
-	virtual int getLevel();// RVA = 0x92240// vtable offset = 0x0
-	virtual Faction* isAFactionUniform();// RVA = 0x92250// vtable offset = 0x0
-	Faction* isUniform; // 0x1E8 Member
-	int value; // 0x1F0 Member
-	virtual GameData* _serialise(GameDataContainer*, itemType);// RVA = 0x5E4170// vtable offset = 0x0
-	virtual void _loadFromSerialise(GameDataContainer*, GameData*);// RVA = 0x5E42F0// vtable offset = 0x0
-	virtual void setInventoryWeAreIn(const hand&);// RVA = 0x92260// vtable offset = 0x0
-	bool isPlayerCrafted();// RVA = 0x6E8C20
-	std::string crafter; // 0x1F8 Member
-	float level; // 0x220 Member
-	int level_0_100; // 0x224 Member
-	virtual ~Gear();// RVA = 0x92290// vtable offset = 0x0
-	// no_addr public class Gear & operator=(const class Gear &);
-	// no_addr public virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
 
-class Sword;
-class Crossbow;
-
-class Weapon : public Gear
-{
-public:
-	// Gear offset = 0x0, length = 0x228
-	virtual float getItemWeight();// RVA = 0x6E8BD0// vtable offset = 0x0
-	virtual int getValueSingle(bool);// RVA = 0x6E8C30// vtable offset = 0x0
-	WeaponCategory getCategory();// RVA = 0x4976D0
-	WeaponCategory getCategory_animationOverride();// RVA = 0x40CAE0
-	bool is2HandedOnly();// RVA = 0x46F950
-	float getCombatWeight();// RVA = 0x6CD900
-	virtual float getCraftTime();// RVA = 0x21AAC0// vtable offset = 0x0
-	virtual float getCraftMaterialMult();// RVA = 0x6ECA30// vtable offset = 0x0
-	// no_addr public virtual void getTooltipData1(class std::vector<StringPair,Ogre::STLAllocator<StringPair,Ogre::CategorisedAllocPolicy<0> > > &);// vtable offset = 0x0
-	virtual Weapon* isWeapon();// RVA = 0x6E8BE0// vtable offset = 0x0
-	virtual Sword* isSword();// RVA = 0x6E8BF0// vtable offset = 0x370
-	virtual Crossbow* isCrossbow();// RVA = 0x6E8C00// vtable offset = 0x0
-	float bleedDamage; // 0x228 Member
-	int modAttack; // 0x22C Member
-	virtual int getSkillModIndoors();// RVA = 0x6E8C10// vtable offset = 0x378
-	// no_addr public void Weapon(const class Weapon &);
-	Weapon(GameData*, GameData*, GameData*, hand, int);// RVA = 0x6E29D0
-	virtual ~Weapon();// RVA = 0x6E8B70// vtable offset = 0x0
-	float combatWeight; // 0x230 Member
-	WeaponCategory category; // 0x234 Member
-	WeaponCategory category_animationOverride; // 0x238 Member
-	// no_addr public class Weapon & operator=(const class Weapon &);
-	// no_addr protected virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
-
-class Sword : Weapon
-{
-public:
-	// Weapon offset = 0x0, length = 0x240
-	// no_addr public void Sword(const class Sword &);
-	Sword(GameData*, GameData*, GameData*, hand, int);// RVA = 0x6E2C80
-	virtual itemType getClassType();// RVA = 0x6ECB40// vtable offset = 0x0
-	virtual Sword* isSword();// RVA = 0x6ECB50// vtable offset = 0x0
-	void setupStats(int, GameData*, GameData*, GameData*);// RVA = 0x6D3E70
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x62B020// vtable offset = 0x0
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x618480// vtable offset = 0x0
-	float cutDamage; // 0x240 Member
-	float bluntDamage; // 0x244 Member
-	float minCutDamage; // 0x248 Member
-	int modDefence; // 0x24C Member
-	int modIndoors; // 0x250 Member
-	virtual int getSkillModIndoors();// RVA = 0x6ECB60// vtable offset = 0x0
-	virtual ~Sword();// RVA = 0x6ECB70// vtable offset = 0x0
-	// no_addr public class Sword & operator=(const class Sword &);
-	// no_addr public virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
-
-class GunClass;
-
-class Crossbow : Weapon
-{
-public:
-	// Weapon offset = 0x0, length = 0x240
-	// no_addr public void Crossbow(const class Crossbow &);
-	Crossbow(GameData*, hand, int);// RVA = 0x6E2E30
-	virtual Crossbow* isCrossbow();// RVA = 0x6ECC50// vtable offset = 0x0
-	virtual itemType getClassType();// RVA = 0x6ECC60// vtable offset = 0x0
-	// no_addr public enum WeaponCategory getCategory();
-	// no_addr public bool is2HandedOnly();
-	virtual float getCraftMaterialMult();// RVA = 0x6ECC70// vtable offset = 0x0
-	virtual float getCraftTime();// RVA = 0x21C4F0// vtable offset = 0x0
-	float getRangeInUnits();// RVA = 0x34FDB0
-	float getEquipPositionOffset();// RVA = 0x42D550
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x628D50// vtable offset = 0x0
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x618180// vtable offset = 0x0
-	virtual void createItemEntityCallback_Equipping(Ogre::Entity*, Ogre::SceneNode*);// RVA = 0x357740// vtable offset = 0x0
-	virtual void destroyItemEntityCallback_Equipping();// RVA = 0x350220// vtable offset = 0x0
-	GunClass* gunClass; // 0x240 Member
-	virtual void setVisible(bool);// RVA = 0x34FD60// vtable offset = 0x0
-	virtual ~Crossbow();// RVA = 0x6ECC80// vtable offset = 0x0
-	// no_addr public class Crossbow & operator=(const class Crossbow &);
-	// no_addr public virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
-
-enum ArmourClass
-{
-	GEAR_CLOTH,
-	GEAR_LIGHT,
-	GEAR_MEDIUM,
-	GEAR_HEAVY,
-	GEAR_MAX
-};
-
-class Armour : Gear
-{
-public:
-	// Gear offset = 0x0, length = 0x228
-	virtual itemType getClassType();// RVA = 0x6EC7A0// vtable offset = 0x0
-	virtual Armour* isArmour();// RVA = 0x6EC7B0// vtable offset = 0x0
-	virtual float getItemWeight();// RVA = 0x6EC7C0// vtable offset = 0x0
-	virtual int getValueSingle(bool);// RVA = 0x6EC7E0// vtable offset = 0x0
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x619C50// vtable offset = 0x0
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x61B9A0// vtable offset = 0x0
-	bool didIHitFlesh(GameData*);// RVA = 0x510F00
-	bool hasArmourCoverage();// RVA = 0x284420
-	virtual float getCraftTime();// RVA = 0x6EC7D0// vtable offset = 0x0
-	static float getArmourCraftingMaterialConsumptionRate(GameData*);// RVA = 0x21ABD0
-	float cutResistance; // 0x228 Member
-	float bluntResistance; // 0x22C Member
-	float pierceResistance; // 0x230 Member
-	float minCutResistance; // 0x234 Member
-	float cutToStun; // 0x238 Member
-	ArmourType materialType; // 0x23C Member
-	ArmourClass armourClassEnum; // 0x240 Member
-	CharacterTypeEnum stigma; // 0x244 Member
-	float athleticsMult; // 0x248 Member
-	int combatSkillBonusAttk; // 0x24C Member
-	int combatSkillBonusDef; // 0x250 Member
-	int perceptionBonus; // 0x254 Member
-	float combatSpeedMult; // 0x258 Member
-	float stealthMult; // 0x25C Member
-	float assassinMult; // 0x260 Member
-	float dexterityMult; // 0x264 Member
-	float damageMult; // 0x268 Member
-	float dodgeMult; // 0x26C Member
-	int unarmedBonus; // 0x270 Member
-	float fistInjuryMult; // 0x274 Member
-	float weatherProtectionAmount; // 0x278 Member
-	float rangedSkillMult; // 0x27C Member
-	std::set<WeatherAffecting, std::less<WeatherAffecting>, Ogre::STLAllocator<WeatherAffecting, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > weatherProtections; // 0x280 Member
-	// no_addr public float getWeatherProtection(enum WeatherAffecting, class GameData *);
-	float getWeatherProtection_simple(WeatherAffecting);// RVA = 0x50F7E0
-	// no_addr public void Armour(const class Armour &);
-	Armour(GameData*, GameData*, hand, Faction*, int);// RVA = 0x6E3030
-	virtual ~Armour();// RVA = 0x6EC6E0// vtable offset = 0x0
-	boost::unordered::unordered_map<GameData*, float, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bodypartCoverage; // 0x2A8 Member
-	float craftTime; // 0x2E8 Member
-	// no_addr public class Armour & operator=(const class Armour &);
-	// no_addr protected virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
-
-class DoorLock;
-
-class LockedArmour : Armour
-{
-public:
-	// Armour offset = 0x0, length = 0x2F0
-	// no_addr public void LockedArmour(const class LockedArmour &);
-	LockedArmour(GameData*, GameData*, hand, Faction*, int);// RVA = 0x6E45E0
-	virtual ~LockedArmour();// RVA = 0x6D1580// vtable offset = 0x0
-	virtual Armour* isArmour();// RVA = 0x6EC8C0// vtable offset = 0x0
-	virtual LockedArmour* isLockedArmour();// RVA = 0x6EC8D0// vtable offset = 0x0
-	DoorLock* lock; // 0x2F0 Member
-	virtual GameData* _serialise(GameDataContainer*, itemType);// RVA = 0x5E4410// vtable offset = 0x0
-	virtual void _loadFromSerialise(GameDataContainer*, GameData*);// RVA = 0x5E44C0// vtable offset = 0x0
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x61D4C0// vtable offset = 0x0
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x6EC8E0// vtable offset = 0x0
-	// no_addr public class LockedArmour & operator=(const class LockedArmour &);
-	// no_addr public virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
-};
 
 // TODO move?
 class RaceLimiter
@@ -353,63 +228,89 @@ public:
 	{
 	public:
 		// VTable         : (none)
-		std::set<RaceData*, std::less<RaceData*>, Ogre::STLAllocator<RaceData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > racesExclude; // 0x8 Member
-		std::set<RaceData*, std::less<RaceData*>, Ogre::STLAllocator<RaceData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > racesInclude; // 0x30 Member
-		virtual bool canEquip(RaceData*, bool);// RVA = 0x46D2B0// vtable offset = 0x0
-		// no_addr public void Limiter(const class RaceLimiter::Limiter &);
-		Limiter();// RVA = 0x46D150
-		~Limiter();// RVA = 0x46C370
-		// no_addr public class RaceLimiter::Limiter & operator=(const class RaceLimiter::Limiter &);
-		// no_addr public void * __vecDelDtor(unsigned int);
+		std::set<RaceData*, std::less<RaceData*>, Ogre::STLAllocator<RaceData*, Ogre::GeneralAllocPolicy > > racesExclude; // 0x8 Member
+		std::set<RaceData*, std::less<RaceData*>, Ogre::STLAllocator<RaceData*, Ogre::GeneralAllocPolicy > > racesInclude; // 0x30 Member
+		virtual bool canEquip(RaceData* race, bool isAnimal);// public RVA = 0x592F30 vtable offset = 0x0
+		bool _NV_canEquip(RaceData* race, bool isAnimal);// public RVA = 0x592F30 vtable offset = 0x0
+		// no_addr void Limiter(const class RaceLimiter::Limiter & _a1);// public missing arg names
+		Limiter();// public RVA = 0x592D90
+		Limiter* _CONSTRUCTOR();// public RVA = 0x592D90
+		~Limiter();// public RVA = 0x591D00
+		void _DESTRUCTOR();// public RVA = 0x591D00
+		// no_addr class RaceLimiter::Limiter & operator=(const class RaceLimiter::Limiter & _a1);// public missing arg names
+		// no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 	};
-	boost::unordered::unordered_map<GameData*, RaceLimiter::Limiter, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, RaceLimiter::Limiter>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > limits; // 0x8 Member
-	static RaceLimiter* getSingleton();// RVA = 0x46DA80
-	void addLimit(GameData*);// RVA = 0x5E56C0
-	virtual bool canEquip(GameData*, RootObject*);// RVA = 0x5DFC90// vtable offset = 0x0
-	virtual bool canEquip(GameData*, RaceData*, bool);// RVA = 0x46D970// vtable offset = 0x8
-	// no_addr public void RaceLimiter(const class RaceLimiter &);
-	RaceLimiter();// RVA = 0x46C960
-	~RaceLimiter();// RVA = 0x5EB710
-	// no_addr public class RaceLimiter & operator=(const class RaceLimiter &);
-	// no_addr public void * __vecDelDtor(unsigned int);
+	ogre_unordered_map<GameData*, RaceLimiter::Limiter>::type limits; // 0x8 Member
+	static RaceLimiter* getSingleton();// public RVA = 0x5938D0
+	void addLimit(GameData* dat);// public RVA = 0x761F40
+	virtual bool canEquip(GameData* item, RootObject* who);// public RVA = 0x75C510 vtable offset = 0x0
+	bool _NV_canEquip(GameData* item, RootObject* who);// public RVA = 0x75C510 vtable offset = 0x0
+	virtual bool canEquip(GameData* item, RaceData* race, bool isAnimal);// public RVA = 0x593780 vtable offset = 0x8
+	bool _NV_canEquip(GameData* item, RaceData* race, bool isAnimal);// public RVA = 0x593780 vtable offset = 0x8
+	// no_addr void RaceLimiter(const class RaceLimiter & _a1);// public missing arg names
+	RaceLimiter();// public RVA = 0x592420
+	RaceLimiter* _CONSTRUCTOR();// public RVA = 0x592420
+	~RaceLimiter();// public RVA = 0x76AC30
+	void _DESTRUCTOR();// public RVA = 0x76AC30
+	// no_addr class RaceLimiter & operator=(const class RaceLimiter & _a1);// public missing arg names
+	// no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
 
 class GameData;
 
-class ContainerItem : Item, RaceLimiter
+class ContainerItem : public Item, public RaceLimiter
 {
 public:
 	// Item offset = 0x0, length = 0x1E8
 	// RaceLimiter offset = 0x1E8, length = 0x48
-	virtual ~ContainerItem();// RVA = 0x5E5620// vtable offset = 0x0
-	virtual itemType getClassType();// RVA = 0x5EB720// vtable offset = 0x0
-	virtual bool canEquip(GameData*);// RVA = 0x5EB890// vtable offset = 0x368
-	virtual void equipItem(const std::string&, Item*);// RVA = 0x5DFD20// vtable offset = 0x0
-	virtual void unequipItem(const std::string&, Item*);// RVA = 0x5DFD50// vtable offset = 0x0
-	virtual void dropItem(RootObject*);// RVA = 0x5DFD80// vtable offset = 0x0
-	virtual bool takeMoney(int);// RVA = 0x5DFDB0// vtable offset = 0x0
-	virtual int getMoney();// RVA = 0x5DFDE0// vtable offset = 0x0
-	void doubleCheckHandle();// RVA = 0x5E0400
-	virtual Ogre::Vector3 getPosition();// RVA = 0x5DFE10// vtable offset = 0x0
-	virtual Inventory* getInventory();// RVA = 0x5EB730// vtable offset = 0x0
-	virtual InventoryLayout* createInventoryLayout();// RVA = 0x5DFE60// vtable offset = 0x0
-	virtual void getTooltipData1(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x622690// vtable offset = 0x0
-	virtual void getTooltipData2(std::vector<StringPair, Ogre::STLAllocator<StringPair, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&);// RVA = 0x6191D0// vtable offset = 0x0
-	virtual GameData* _serialise(GameDataContainer*, itemType);// RVA = 0x5E4930// vtable offset = 0x0
-	virtual void _loadFromSerialise(GameDataContainer*, GameData*);// RVA = 0x5E4990// vtable offset = 0x0
-	virtual GameSaveState serialise(GameDataContainer*, GameData*, PosRotPair*);// RVA = 0x5E0580// vtable offset = 0x0
-	virtual void loadFromSerialise(GameSaveState*);// RVA = 0x5E03C0// vtable offset = 0x0
-	virtual void setProperOwner(const hand&);// RVA = 0x5EB750// vtable offset = 0x0
+	virtual ~ContainerItem();// public RVA = 0x761EA0 vtable offset = 0x0
+	void _DESTRUCTOR();// public RVA = 0x761EA0 vtable offset = 0x0
+	virtual itemType getClassType() const;// public RVA = 0x76AC40 vtable offset = 0x0
+	itemType _NV_getClassType() const;// public RVA = 0x76AC40 vtable offset = 0x0
+	virtual bool canEquip(GameData* race);// public RVA = 0x76AE00 vtable offset = 0x368
+	bool _NV_canEquip(GameData* race);// public RVA = 0x76AE00 vtable offset = 0x368
+	virtual void equipItem(const std::string& what, Item* who);// public RVA = 0x75C5A0 vtable offset = 0x0
+	void _NV_equipItem(const std::string& what, Item* who);// public RVA = 0x75C5A0 vtable offset = 0x0
+	virtual void unequipItem(const std::string& what, Item* item);// public RVA = 0x75C5D0 vtable offset = 0x0
+	void _NV_unequipItem(const std::string& what, Item* item);// public RVA = 0x75C5D0 vtable offset = 0x0
+	virtual void dropItem(RootObject* what);// public RVA = 0x75C600 vtable offset = 0x0
+	void _NV_dropItem(RootObject* what);// public RVA = 0x75C600 vtable offset = 0x0
+	virtual bool takeMoney(int n);// public RVA = 0x75C630 vtable offset = 0x0
+	bool _NV_takeMoney(int n);// public RVA = 0x75C630 vtable offset = 0x0
+	virtual int getMoney() const;// public RVA = 0x75C660 vtable offset = 0x0
+	int _NV_getMoney() const;// public RVA = 0x75C660 vtable offset = 0x0
+	void doubleCheckHandle();// public RVA = 0x75CC80
+	virtual Ogre::Vector3 getPosition();// public RVA = 0x75C690 vtable offset = 0x0
+	Ogre::Vector3 _NV_getPosition();// public RVA = 0x75C690 vtable offset = 0x0
+	virtual Inventory* getInventory() const;// public RVA = 0x76AC50 vtable offset = 0x0
+	Inventory* _NV_getInventory() const;// public RVA = 0x76AC50 vtable offset = 0x0
+	virtual InventoryLayout* createInventoryLayout();// public RVA = 0x75C6E0 vtable offset = 0x0
+	InventoryLayout* _NV_createInventoryLayout();// public RVA = 0x75C6E0 vtable offset = 0x0
+	virtual void getTooltipData1(Ogre::vector<StringPair>::type& lines);// public RVA = 0x7A8E30 vtable offset = 0x0
+	void _NV_getTooltipData1(Ogre::vector<StringPair>::type& lines);// public RVA = 0x7A8E30 vtable offset = 0x0
+	virtual void getTooltipData2(Ogre::vector<StringPair>::type& lines);// public RVA = 0x79F970 vtable offset = 0x0
+	void _NV_getTooltipData2(Ogre::vector<StringPair>::type& lines);// public RVA = 0x79F970 vtable offset = 0x0
+	virtual GameData* _serialise(GameDataContainer* container, itemType type);// public RVA = 0x7611B0 vtable offset = 0x0
+	GameData* _NV__serialise(GameDataContainer* container, itemType type);// public RVA = 0x7611B0 vtable offset = 0x0
+	virtual void _loadFromSerialise(GameDataContainer* container, GameData* state);// public RVA = 0x761210 vtable offset = 0x0
+	void _NV__loadFromSerialise(GameDataContainer* container, GameData* state);// public RVA = 0x761210 vtable offset = 0x0
+	virtual GameSaveState serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x75CE00 vtable offset = 0x0
+	GameSaveState _NV_serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x75CE00 vtable offset = 0x0
+	virtual void loadFromSerialise(GameSaveState* state);// public RVA = 0x75CC40 vtable offset = 0x0
+	void _NV_loadFromSerialise(GameSaveState* state);// public RVA = 0x75CC40 vtable offset = 0x0
+	virtual void setProperOwner(const hand& h);// public RVA = 0x76AC70 vtable offset = 0x0
+	void _NV_setProperOwner(const hand& h);// public RVA = 0x76AC70 vtable offset = 0x0
 	RootObject* callbackOwner; // 0x230 Member
 	float athleticsMult; // 0x238 Member
 	float weightMult; // 0x23C Member
 	float combatSpeedMult; // 0x240 Member
 	int combatSkillBonus; // 0x244 Member
 	float stealthMult; // 0x248 Member
-	boost::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > racesExclude; // 0x250 Member
-	// no_addr public void ContainerItem(const class ContainerItem &);
-	ContainerItem(GameData*, GameData*, hand);// RVA = 0x5E5D80
+	ogre_unordered_set<GameData*>::type racesExclude; // 0x250 Member
+	// no_addr void ContainerItem(const class ContainerItem & _a1);// public missing arg names
+	ContainerItem(GameData* dat, GameData* mat, hand _handle);// protected RVA = 0x762600
+	ContainerItem* _CONSTRUCTOR(GameData* dat, GameData* mat, hand _handle);// protected RVA = 0x762600
 	Inventory* inventory; // 0x290 Member
-	// no_addr public class ContainerItem & operator=(const class ContainerItem &);
-	// no_addr public virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
+	// no_addr class ContainerItem & operator=(const class ContainerItem & _a1);// public missing arg names
+	// virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };

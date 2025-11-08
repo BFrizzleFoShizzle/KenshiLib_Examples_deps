@@ -21,7 +21,7 @@ public:
     TimeOfDay accessPassExpirationTime; // 0x50 Member
     // no_addr void BountyManager(const class BountyManager & _a1);// public missing arg names
     BountyManager(Character * c);// public RVA = 0x6405E0
-    void _CONSTRUCTOR(Character * c);// public RVA = 0x6405E0
+    BountyManager* _CONSTRUCTOR(Character * c);// public RVA = 0x6405E0
     int getPercievedBounty(Character * whosLooking);// public RVA = 0x852A40
     int getActualBounty(Faction * whosLooking);// public RVA = 0x852AF0
     void notifyPlayerClaimBounty(Faction * whosLooking);// public RVA = 0x852BE0

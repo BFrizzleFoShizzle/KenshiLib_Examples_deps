@@ -7,7 +7,7 @@ class Logger
 public:
     enum Severity
     {
-        Tracw,
+        Trace,
         Debug,
         Info,
         Warning,
@@ -15,9 +15,9 @@ public:
         Fatal
     };
 
-    static void init();// RVA = 0x11D2C0
-    static void close();// RVA = 0x11CCF0
-    static void logMessage(const std::string&, enum Logger::Severity);// RVA = 0x11CD90
-    static void logMessageDebug(const std::string&);// RVA = 0x11CCD0
-    static void logHeader();// RVA = 0x11CFC0
+    static void init();// public RVA = 0x17F740
+    static void close();// public RVA = 0x17F170
+    static void logMessage(const std::string& message, Logger::Severity severity);// public RVA = 0x17F210
+    static void logMessageDebug(const std::string& message);// public RVA = 0x17F150
+    static void logHeader();// private RVA = 0x17F440
 };

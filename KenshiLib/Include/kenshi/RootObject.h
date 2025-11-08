@@ -22,7 +22,7 @@ public:
     // RootObjectBase offset = 0x0, length = 0x78
     // no_addr void RootObject(const class RootObject & _a1);// public missing arg names
     RootObject(GameData * d, Faction * ownr, hand _h);// public RVA = 0x594080
-    void _CONSTRUCTOR(GameData * d, Faction * ownr, hand _h);// public RVA = 0x594080
+    RootObject* _CONSTRUCTOR(GameData * d, Faction * ownr, hand _h);// public RVA = 0x594080
     virtual ~RootObject();// public RVA = 0x5941C0 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x5941C0 vtable offset = 0x0
     virtual bool needsSaving(const std::string & s) const;// public RVA = 0xD1E90 vtable offset = 0xA8

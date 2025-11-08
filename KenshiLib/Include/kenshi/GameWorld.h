@@ -45,7 +45,7 @@ public:
     CPerfTimer timer; // 0x0 Member
     // no_addr void SimpleTimeStamper(const class SimpleTimeStamper & _a1);// public missing arg names
     SimpleTimeStamper();// public RVA = 0x685F10
-    void _CONSTRUCTOR();// public RVA = 0x685F10
+    SimpleTimeStamper* _CONSTRUCTOR();// public RVA = 0x685F10
     double getTime(double _lastStamp);// public RVA = 0x2BD4A0
     double stampTime();// public RVA = 0x1CEFE0
     ~SimpleTimeStamper();// public RVA = 0x685EA0
@@ -65,7 +65,7 @@ public:
     bool startUpThreads();// private RVA = 0x86BF20
     // no_addr void GameWorld(const class GameWorld & _a1);// public missing arg names
     GameWorld();// public RVA = 0x873780
-    void _CONSTRUCTOR();// public RVA = 0x873780
+    GameWorld* _CONSTRUCTOR();// public RVA = 0x873780
     ~GameWorld();// public RVA = 0x86C0C0
     void _DESTRUCTOR();// public RVA = 0x86C0C0
     bool start(RendererT * _rend);// public RVA = 0x8693D0
@@ -182,9 +182,9 @@ public:
         float number; // 0x4C Member
         void * data; // 0x50 Member
         SysMessage(const GameWorld::SysMessage & __that);// public RVA = 0x2AADF0
-        void _CONSTRUCTOR(const GameWorld::SysMessage & __that);// public RVA = 0x2AADF0
+        SysMessage* _CONSTRUCTOR(const GameWorld::SysMessage & __that);// public RVA = 0x2AADF0
         SysMessage(GameWorld::SysMessageEnum _msg, const hand & _target, const hand & _from, bool _on, float _number, void * _data);// public RVA = 0x2AA040
-        void _CONSTRUCTOR(GameWorld::SysMessageEnum _msg, const hand & _target, const hand & _from, bool _on, float _number, void * _data);// public RVA = 0x2AA040
+        SysMessage* _CONSTRUCTOR(GameWorld::SysMessageEnum _msg, const hand & _target, const hand & _from, bool _on, float _number, void * _data);// public RVA = 0x2AA040
         // no_addr void SysMessage();// public
         bool operator==(const GameWorld::SysMessage & m) const;// public RVA = 0x338050
         // no_addr class GameWorld::SysMessage & operator=(const class GameWorld::SysMessage & _a1);// public missing arg names

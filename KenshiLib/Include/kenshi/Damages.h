@@ -7,11 +7,11 @@ class Damages : private Ogre::GeneralAllocatedObject
 public:
     // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
     Damages(const Damages& t);// public RVA = 0x43FB00
-    void _CONSTRUCTOR(const Damages& t);// public RVA = 0x43FB00
+    Damages* _CONSTRUCTOR(const Damages& t);// public RVA = 0x43FB00
     Damages(float _cut, float _blunt, float _pierce, float bleed, float armour);// public RVA = 0x296720
-    void _CONSTRUCTOR(float _cut, float _blunt, float _pierce, float bleed, float armour);// public RVA = 0x296720
+    Damages* _CONSTRUCTOR(float _cut, float _blunt, float _pierce, float bleed, float armour);// public RVA = 0x296720
     Damages();// public RVA = 0x643170
-    void _CONSTRUCTOR();// public RVA = 0x643170
+    Damages* _CONSTRUCTOR();// public RVA = 0x643170
     void multiply(float mult);// public RVA = 0x337610
     float total() const;// public RVA = 0x43FB60
     // no_addr float highest();// public
