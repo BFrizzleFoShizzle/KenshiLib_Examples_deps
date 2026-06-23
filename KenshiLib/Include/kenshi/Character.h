@@ -72,25 +72,6 @@ public:
     };
 };
 
-// TODO move?
-namespace RagdollPart
-{
-    enum Enum
-    {
-        NONE,
-        WHOLE,
-        RIGHT_ARM,
-        LEFT_ARM = 0x4,
-        HEAD = 0x8,
-        RIGHT_LEG = 0x10,
-        LEFT_LEG = 0x20,
-        CARRY_MODE = 0x800,
-        ARMS = 0x6,
-        LEGS = 0x30,
-        ALL = 0xFFFF8000
-    };
-};
-
 enum CharacterPerceptionTags_ShortTerm
 {
     ST_NONE,
@@ -124,15 +105,6 @@ enum SoundRange
     SOUNDRANGE_SHORT = 0xFFFF9C40,
     SOUNDRANGE_LONG = 0xF4240,
     SOUNDRANGE_ALWAYS = 0x0
-};
-
-enum SquadMemberType
-{
-    SQUAD_1,
-    SQUAD_2,
-    SQUAD_LEADER,
-    SQUAD_SIGNALS_PLAN,
-    SQUAD_SLAVE
 };
 
 enum CharacterMessage

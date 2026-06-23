@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ogre/OgreQuaternion.h>
+#include <locale>
 
 class Item;
 class GameWorld;
@@ -10,6 +11,8 @@ class OptionsHolder;
 class GameData;
 class GameDataContainer;
 class ForgottenGUI;
+class KingOfRenderThread;
+class SharedKing;
 
 // TODO
 namespace FoliageSystem
@@ -28,3 +31,6 @@ __declspec(dllimport) GlobalConstants* con;
 __declspec(dllimport) InputHandler* key;
 __declspec(dllimport) OptionsHolder* options;
 __declspec(dllimport) ForgottenGUI* gui;
+__declspec(dllimport) KingOfRenderThread* au;
+__declspec(dllimport) std::locale* globalLocale;
+__declspec(dllimport) SharedKing* shou;
